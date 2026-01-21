@@ -1,0 +1,27 @@
+fastapi
+uvicorn[standard]
+apscheduler
+python-dotenv
+google-generativeai
+PyMuPDF
+aiofiles
+python-multipart
+pinecone
+google-search-results # Changed from serpapi>=2.0
+pydantic
+pydantic-settings
+pypdf
+PyCryptodome
+httpx
+google-genai
+reportlab
+weasyprint
+aiohttp
+slowapi
+sqlalchemy
+psycopg2-binary
+alembic
+bcrypt
+PyJWT
+email-validator
+pydantic[email]

@@ -1,0 +1,2027 @@
+
+You are a *construction specification condenser*.
+
+Goal: Reduce the following **PART 2 – PRODUCTS** text to <= 25000 characters (hard max 30000), while **preserving every product line and all context strictly needed** for downstream product extraction.
+
+### Keep (must preserve)
+- Section numbering and headings inside PART 2 (e.g., "2.1", "2.2", "2.3", and named sub-articles).
+- Product/Material headers and named items.
+- All specification bullets that define product identity: standards (ASTM/UL/EN/etc.), type/grade/class, dimensions, performance values, composition, finishes, accessories that are *orderable*, and *explicit* options/alternates.
+- "Basis of Design" lines (as textual references), **but do not expand narrative copies**.
+- Manufacturer lists (approved/base/optional).
+- Cross-references within PART 2 that constrain selection (e.g., “match finish in 2.5.B”).
+- Any explicit selection tables or enumerated options that affect the product identity.
+- Submittal phrases **only** when they define required certification/standard marking tied to product identity (e.g., “Provide ICC-ES report for Type X boards”).
+
+### Drop / Compress
+- Boilerplate, general notes, execution language, QA narratives unless they define a product identity constraint.
+- Repetitive synonyms, restated paragraphs, marketing fluff, and long prose that does not add unique spec keys.
+- Page headers/footers, line numbers, orphan page artifacts.
+
+### Style
+- Output **plain text only** (no JSON, no markdown fences), preserving logical hierarchy:
+  - Keep section numbers and short headers.
+  - Convert multi-line rambles into clean bullets or short lines.
+  - Remove excessive whitespace; keep single blank line between major subsections.
+
+### Strict Requirements
+- Do **not** hallucinate or invent anything not in the input.
+- Do **not** re-label standards or change values.
+- Ensure the result stays **<= 30000 characters**. If needed, progressively compress commentary but never drop product-identity bullets.
+- Return **only** the condensed plain text. No explanations.
+
+--- BEGIN PART 2 TEXT ---
+PART 2 - PRODUCTS
+2.1
+MANUFACTURERS
+A.
+Product of individuals, firms or corporations regularly engaged in manufacturing elevators
+comparable with this contract and in satisfactory operation for a period of not less than five (5)
+years.
+B.
+Qualified Bidders / Models (in alphabetical order)
+1.
+KONE U.S. / MonoSpace 700
+2.
+Mitsubishi Electric Corporation / DiamondTrac
+3.
+Otis Elevator Company / Gen2 – Overslung
+4.
+Schindler Elevator Corporation / 5500AE
+5.
+TK Elevator / synergy Performance Series
+C.
+The listing of the models is for general reference. Companies are required to meet all
+specification requirements regardless of model listed.
+D.
+Substitute model products shall not be offered as a base bid unless agreed upon beforehand in
+writing. It is the intent of this specification that the design team be able to review comparable
+offers between bidders. If substitute model products are bid without prior knowledge, the
+design team reserves the right to reject the offer in its entirety.
+2.2
+MATERIALS
+A.
+Aluminum: Extrusions as per ASTM B221.
+B.
+Plywood Backing: PS-1-83, A-D Interior Grade Douglas fir. Fire treat per AWPA with a
+suitable water-soluble fire-retardant formation; U.L. FR-S fire hazard classification.
+C.
+Sheet Steel (Painted): ASTM A1008; cold-rolled, stretcher-leveled, furniture grade; free from
+defects.
+D.
+316L Satin Stainless Steel: As per ASTM A167, Type 316L series, with finish as specified.
+E.
+316L Textured Stainless Steel - at service elevator: As per ASTM A167, Type 316, Rigidized or
+approved equal textured stainless-steel pattern 5WL®, with satin finish as specified.
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 10
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+2.3
+
+2.4
+PASSENGER ELEVATOR LIST
+A.
+Also, Refer to, Vertical Transportation Drawings.
+2.5
+OUTLINE OF EQUIPMENT
+A.
+Passenger Elevators
+1.
+Contract Load, in Pounds
+5,000
+2.
+Contract Speed, in FPM
+200
+3.
+Class of Loading
+C-3
+4.
+Machine Location
+Overhead in hoistway
+5.
+Machine Type
+Gearless
+6.
+Type of Control
+AC variable frequency
+7.
+Operation
+Duplex Selective Collective
+8.
+Stand-by power
+All elevators shall be connected.
+9.
+Car and Hoistway Door Operation
+Power operated, high-speed.
+10.
+Door Protection
+Infrared Detector
+11.
+Pit Access Ladder
+Provide and install for each elevator.
+12.
+Hoistway Doors
+Minimum 14-gauge 316L Satin Stainless Steel at
+all floors with Sight Guards
+13.
+Hoistway Frames
+Minimum 14-gauge 316L Satin Stainless-Steel
+Finish and Mitered and Welded construction
+14.
+Hoistway Sills
+Extend full width so that doors remain in sill
+when in fully open position. Milled stainless-
+steel sills at all openings with a non-slip surface.
+Hoistway and car sill reveals to match.
+15.
+Hoistway Sill Angles
+Manufacturer’s standard
+16.
+Cab Enclosure
+14-gauge car shell. All elevators shall be
+designed to accommodate the finishes as detailed
+on the architectural drawings. Handrail and
+Bumper Rails required on all walls.).
+Cab Fronts
+ Doors and fronts shall be 316L Satin Stainless
+Steel; minimum 14 gauge. Provide a baked
+enamel car shell.
+17.
+Car Sills
+Provide milled stainless-steel sills and matching
+sill extensions to align edge of sill with face of
+front returns. Extend full width so that doors
+remain in sill when in fully open position.
+Reveals shall match hoistway sills.Cab Flooring
+ Provide 2-inch recess for flooring. Minimum
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 11
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+sill recess for epoxy terrazzo (which shall be
+installed by the flooring contractor) over sub-
+floor. Configure equipment and cabs to accept
+the entire weight of the flooring and sub-floor.
+The subfloor shall consist of 2 layers of marine
+grade plywood
+18.
+Car Operating Panels
+Main with engraved signage and service cabinet.
+Auxiliary panels shall be provided only on
+elevators with front and rear openings.
+
+19.
+Direction Indicators
+Hall lanterns at all floors
+20.
+Hall Stations
+Single Riser per Group; In Case of Fire and Fire
+Instruction signs shall be engraved on faceplates.
+21.
+Fire and Engineer’s Control Panels
+As specified.
+22.
+Monitoring System
+
+
+As specified.
+23.
+Output Timers
+Cab Fan and Light
+24.
+Emergency Car Light
+Required to power normal car lighting.
+25.
+Pads and Hooks
+Provide four sets.
+26.
+Work Lights and Receptacles
+On top of each cab and under the car platform
+with activation switches in the service cabinet.
+
+27.
+Communication Systems
+Hands-free, two-way video Two-way
+communication to/from the elevator cab within
+the building for emergency personnel and first
+responders. (2019 code compliant)
+28.
+Weather proofing
+VT Cores 3 & 4: Elevators 6, 7, 16, 17, 19, 20,
+21 & 22: These elevators will be exposed to the
+exterior elements. Provide galvanized metal in
+the hoistway or paint all non-running surfaces
+with 3 coats of rust inhibiting paint. Protect door
+operator with galvanized sheet steel cover. All
+switches in the hoistway shall be in NEMA 4 or
+validated equal watertight enclosures. Back
+surfaces of hoistway and car doors shall be 316L
+Satin Stainless Steel or painted with 3 coats of
+rust inhibiting paint.
+
+B.
+Service Elevators
+1.
+Elevator Use
+Service
+2.
+Contract Load, in Pounds
+5,000
+3.
+Contract Speed, in FPM
+200
+4.
+Class of Loading
+C-3
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 12
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+5.
+Machine Location
+Overhead in hoistway
+6.
+Machine Type
+Gearless
+7.
+Type of Control
+AC variable frequency
+8.
+Operation
+Duplex Selective Collective for two car groups;
+Simplex Selective Collective for single cars
+9.
+Pit Access Ladder
+Provide and install for each elevator.
+10.
+Car and Hoistway Door Operation
+Power operated, high-speed.
+11.
+Door Protection
+Infrared Detector
+
+12.
+Hoistway Sills
+
+
+Extend full width so that doors remain in sill
+
+
+
+
+
+when in fully open position Provide milled
+
+
+
+
+
+stainless-steel sills at all openings with a non-
+
+
+
+
+
+slip surface. Car and Hoistway sill reveals shall
+
+
+
+
+
+match.
+13.
+Hoistway Sill Angles
+Provide 5-inch x 5-inch x ½ inch angles or
+manufacturer standards reinforced with gusset
+angles fastened a maximum of 12 inches on
+center.
+14.
+Hoistway Entrance
+Doors shall be a minimum 14-gauge 316L
+Textured Stainless Steel; Frames shall be a
+minimum 14 gauge bolted with a 316L satin
+stainless-steel finish
+15.
+Cab Enclosure
+Car walls shall be a minimum of 14 gauge with
+applied minimum 14-gauge 316L Textured
+Stainless Steel. Fronts shall be a minimum 14-
+gauge 316L Satin Stainless Steel. Handrail and
+Bumper Rails required on all walls. Provide
+milled 316L stainless-steel sills and matching sill
+extensions to align edge of sill with face of front
+returns. Sills shall extend the full width so that
+doors remain in sill when in fully open position
+and shall be extended to face of front return.
+Hoistway and car sill reveals shall match.
+16.
+Car Flooring
+Provide finishes as specified. Provide a two-inch
+recess to accommodate the finished floor. 316L
+Satin Stainless Steel checker plate installed over
+cab sub-floor. Provide 2-inch recess for flooring.
+The subfloor shall consist of 2 layers of marine
+grade plywood.
+17.
+Car Operating Panels
+Main on all cars. Auxiliary panel shall be
+provided on cars with front and rear openings.
+18.
+Direction Indicators
+Hall Lanterns at all floors
+19.
+Hall Stations
+Single riser: In Case of Fire and Fire Instruction
+signs shall be engraved on faceplates.
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 13
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+20.
+Fire and Engineer’s Control Panels
+Required; One panel at each location which will
+display all functions and incorporate all switches
+for elevators and escalators.
+21.
+Monitoring System
+
+
+As specified.
+22.
+Output Timers
+Cab Fan and Light
+23.
+Emergency Car Light
+Required to power normal car lighting.
+24.
+Pads and Hooks
+Provide four sets.
+25.
+Communication Systems
+Hands-free, two-way with video capability (2019
+compliant) Two-way communication to/from the
+elevator cab within the building for emergency
+personnel and first responders.
+2.6
+OWNER DRIVEN ALTERNATES:
+A.
+Change reference to stainless steel to reflect 316L stainless steel.
+B.
+Add Special project warranty
+C.
+Weather proofing: Added NEMA 4 or validated equal to "watertight enclosures.
+D.
+Maintenance Service: Pricing for 3 years continuing maintenance; break out pricing
+E.
+1.2.C.28: Revised to Read: The flooring on all cars shall be ¾= thick epoxy terrazzo tile
+F.
+2.4.A.18 & 2.10.A.9: Revised to Read: Provide 2-inch recess for flooring. Minimum sill
+recess for epoxy terrazzo (which shall be installed by the flooring contractor) over sub-floor.
+Configure equipment and cabs to accept the entire weight of the flooring and sub-floor. The
+subfloor shall consist of 2 layers of marine grade plywood. Provide two layers of ¾ inch marine
+grade plywood which shall be continuously glued together and anchored with bolts countersunk
+through the plywood and steel plate cab shell for the subfloor. Configure equipment and cab to
+accept the thickness and weight of the flooring, tile setting, sub-floor, and all finishes.
+G.
+2.8.K. Revised Gauge: All hoistway doors, frames, car doors, car fronts and shells shall be a
+minimum 14 gauge.
+H.
+2.9.D Added: Platform to be a minimum 1/4-inch-thick reinforced steel plate.
+I.
+2.9.A.5 Added: Sills shall be grouted solid to the platform.
+J.
+2.9.A.13 Revised to Read: Handrail: End caps are to be welded flush and ground smooth.
+Bottom rail: 4-inch bar type handrails / bumper rails located at 8 inches above finished floor on
+all three (3) walls. Bar thickness shall be 3/8-inch.
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 14
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+2.7
+CONTROL ROOM EQUIPMENT
+A.
+Provide equipment to fit space conditions shown; all costs for re-design of, and revisions to,
+building spaces and structure due to selection of Elevator Subcontractor, Manufacturer, change
+to equipment availability, production or selection shall be borne by Elevator Subcontractor.
+B.
+VVVF Motor Drive: Provide VVVF motor drive as follows:
+1.
+The drive shall vary the torque on the motor during acceleration and deceleration.
+2.
+The drive shall be capable of on-site programming the volts per Hertz acceleration and
+deceleration ride profiles to adjust the ride quality to drive control characteristics.
+3.
+The flux vector drive shall control AC induction motors using a high resolution, dual
+channel optical reader.
+4.
+The flux vector drive shall deliver 100-percent rated motor torque from base speed down
+to zero speed.
+5.
+The flux vector drive shall not use DC injection for slowdown braking.
+6.
+The flux vector drive shall be adjustable to achieve the required current motor voltage
+and frequency to match the characteristics of the hoist motor.
+7.
+The drive shall not create excessive audible noise in the elevator motor.
+8.
+The drive shall deliver enough current to accelerate the elevator to contract speed at the
+rated load. The drive shall provide speed regulation within 3-percent during all phases of
+acceleration, deceleration and leveling.
+C.
+Isolation Transformer: Provide necessary isolation transformers, reactors, capacitors, and other
+devices to limit the overall Distortion Factor at the point of connection of the elevator converter
+feeders to the electrical distribution system to a maximum of 3-percent.
+D.
+Isolation Mounts: Provide vibration isolation, of an approved type, which shall effectively
+prevent transmission of machine vibration to the building structure. Provide 40 durometer
+double deflection neoprene mounts sized for a static deflection under load of minimum 3/16-
+inch for mounting the motor and gear box. Acceptable mounts are Mason Industries Type BR or
+equivalent. equivalent.
+E.
+Isolation shall be provided for the following:
+1.
+Harmonic distortion
+2.
+Power factor
+3.
+Flicker
+4.
+Line notching
+F.
+Controller: Provide enclosed controller panels with ventilated cabinets and hinged or removable
+doors. Provide permanently marked symbols or letters identical to those on wiring diagrams
+adjacent to each component. Provide the following:
+1.
+All high voltage (110-volt or above) contact points inside the controller cabinet shall be
+protected from accidental contact when the doors are open.
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 15
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+2.
+Controller shall be separated into two distinct halves, Motor Drive side and Control side.
+High voltage motor power conductors shall be routed as to be physically segregated from
+the rest of the controller.
+3.
+Field conductor terminations shall be segregated; high voltage (greater than 30-volt DC
+and 100-volt AC) and low voltage (less than 30-volt DC).
+4.
+Controllers shall be designed, tested, and certified for Electromagnetic Interference
+(EMI) immunity in compliance with EN12015.
+G.
+Components: The microprocessor-based group dispatcher and communications network shall be
+designed and installed to meet the following requirements:
+1.
+Provisions shall be made in the dispatch computer so that the elevator system dispatching
+can be modified at a future time. The system shall be so designed that the modifications
+to the software shall be all that is required to revise the dispatching. It shall be further
+designed so that there will be minimum shut down time should changes be required.
+2.
+The latching circuitry (outputs) shall be fail-safe design that turns off all the outputs in
+the event of a processor malfunction.
+3.
+Power Supplies: All power supplies utilized shall be UL recognized. They shall all have
+short circuit protection.
+4.
+Frame: All assemblies, power supplies, chassis, switches, relays, and other items shall be
+securely mounted on a substantial, self-supporting steel frame. The equipment shall be
+completely enclosed with covers. No equipment is to be mounted on the covers.
+5.
+Wiring: All factory wiring shall utilize UL labeled copper wires. All wiring
+interconnections shall be neatly routed. All wiring connections to studs of terminals shall
+be made by means of solder or solder-less lugs.
+6.
+Marking: All components shall be clearly and permanently identified adjacent to each
+device and shall be identical to the wiring diagram.
+7.
+Provide extender boards when computing devices are used inside a computer chassis to
+have access to the printed circuit cards utilized.
+8.
+Electronic time delay devices shall use stable capacitor or crystals as the time base.
+H.
+Printed Circuits and Related Hardware:
+1.
+All solid-state hardware and devices shall have built-in noise suppression devices that
+provide a level of noise immunity compliant with EN12015.
+2.
+All inputs from external devices (such as pushbuttons) and all outputs to external devices
+(such as indicators, relays) shall be isolated.
+3.
+The use of relays as input/output devices is not acceptable.
+4.
+A separate regulated power supply shall be used for each computer chassis.
+5.
+The control circuits shall be so designed so that one side of the power supply is grounded
+to provide for testing.
+6.
+Under no circumstances shall the safety circuits be affected by accidental grounding of
+any part of the system.
+7.
+In the event of a power failure or interruption, the system shall be designed so that it will
+start properly when power is returned.
+8.
+System memory shall be provided so that data shall not be lost in the event of a power
+failure or disturbance.
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 16
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+9.
+ Conduits or other wiring shall not be exposed in the lobby or other occupied parts of the
+building.
+I.
+Speed Regulation:
+1.
+The rate of acceleration and deceleration of the cars under any condition of load shall be
+as nearly constant as is possible with the method of control specified and employed and
+shall be independent of the operating devices in the car.
+2.
+The acceleration, deceleration and velocity shall all be computer controlled. The
+detection of velocity and position of the car shall be fed into the computer. The computer
+shall compare this information with the velocity profile and adjust as necessary to insure
+a fast and smooth acceleration and deceleration curve. The maximum acceleration /
+deceleration shall not be less than 2’-6= per second2 and shall change uniformly.
+J.
+Diagnostic Tools: Elevator Subcontractor shall provide all on-board diagnostic tools and
+documentation required for the adjustment, troubleshooting, and reprogramming of the elevator
+system upon completion, including:
+1.
+Passwords or identification codes required to gain access to each software program to
+perform diagnostics or program changes.
+2.
+A composite listing of the individual settings chosen for variable software parameters
+stored in the software programs.
+3.
+A complete dictionary of fault codes with recommended steps for resolution, in sequence
+from highest to lowest probable cause.
+K.
+Seismic Protective Features: Provide the following:
+1.
+All code requirements.
+2.
+Dual axis seismic switch with horizontal and vertical motion sensors.
+3.
+Conduit supports.
+2.8
+OPERATING SYSTEMS
+A.
+Provide a closed-loop solid-state microprocessor system to provide car and group operational
+control operation as indicated.
+B.
+Duplex Selective Collective: For 2 car groups
+1.
+With two cars in service, one car shall normally park at the main floor (<home car=). The
+other car (<free car=) shall park at landing last served with doors closed.
+2.
+The free car shall answer hall calls above or below the landing at which the car is
+standing, except main floor hall calls.
+3.
+When the free car is clearing calls, the home car shall respond to:
+a.
+A call registered on the home car buttons.
+b.
+An up-hall call from the landing below the free car while the free car is traveling
+up.
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 17
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+c.
+An up or down call registered from the landing above the free car while it is
+traveling down.
+d.
+Inability of the free car to clear all hall calls within approximately 40 seconds.
+e.
+Registration of car call button shall cause the car to start. The car shall respond to
+its own car calls and corridor calls, in the direction of travel, and in order in which
+the landings are reached.
+4.
+Only one car shall stop in response to anyone-hall call. The first car to complete all calls
+shall return to the main floor.
+5.
+The car shall remain at the arrival floor for an adjustable interval to permit passenger
+transfer. Doors shall close after a predetermined interval, unless the car is parked at the
+main floor, after opening unless closing is interrupted by car door reversal device or door
+open button in car
+6.
+The car shall remain at the arrival floor for an adjustable interval to permit passenger
+transfer. Doors shall close after a predetermined interval, unless the car is parked at the
+main floor, after opening unless closing is interrupted by car door reversal device or door
+open button in car.
+7.
+Programmed Door Control: Separate adjustable times shall be provided for each car to
+establish minimum passenger transfer time for car stops, intermediate floor hall call stops
+and lobby floor stops. All timing shall be computerized to coincide with traffic demands.
+8.
+Provide the following system features:
+a.
+Dispatch Protection: The system shall automatically provide dispatching in the
+event of failure of the primary system. A visible and audible alarm shall be
+provided to indicate loss of the dispatching computer.
+b.
+Delayed Car Protection: The system shall automatically disassociate a car from the
+Group System in the event the car is delayed for a predetermined time. The car
+shall be automatically restored to the Group System when the cause of the delay
+has been eliminated.
+c.
+Designated Parking: The system shall provide for car to park as designated by the
+Controller or park at its last call.
+d.
+Next Car: The car selected, as next up at the lobby floor shall park with its door
+open. If an absence of calls exists, the door shall close automatically as
+commanded by the Group Controller.
+9.
+Ascending Car Over-speed and Unintended Car Movement Protection: Provide operation
+to prevent the elevator from striking the hoistway overhead or unintended car movement
+per the requirements of the code.
+
+C.
+Simplex Selective Collective For Single Elevators
+1.
+Controls shall be a microprocessor-based system.
+2.
+Momentary pressure of car or hall button, other than landing at which car is parked, shall
+automatically start the car, and dispatch the car to the corresponding floor for which that
+call was registered. If a call is registered at the floor when the car is idle, the doors shall
+automatically open.
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 18
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+3.
+When the direction of travel has been established, the car shall answer all calls
+corresponding to the direction of travel and shall not reverse direction until all car and
+hall calls, in that direction, have been answered.
+4.
+Calls registered for the opposite direction of car travel shall remain registered and shall
+be answered after car has completed its calls in the direction of travel.
+5.
+The car shall remain at the arrival floor for an adjustable interval to permit passenger
+transfer. Doors shall close after a predetermined interval after opening unless closing is
+interrupted by car door reversal device or door open button in car.
+6.
+Hall call registration lamps shall not extinguish until the doors begin to open on the
+responding elevator.
+7.
+Car call buttons shall not illuminate if the elevator is already at the floor the car call is
+registered for.
+8.
+The car shall remain at the arrival floor for an adjustable interval to permit passenger
+transfer. Doors shall close after a predetermined interval after opening unless closing is
+interrupted by car door reversal device or door open button in car.
+9.
+Programmed Door Control: Separate adjustable times shall be provided to establish
+minimum passenger transfer time for car stops, intermediate floor hall call stops and
+lobby floor stops. All timing shall be computerized to coincide with traffic demands.
+10.
+Provisions shall be made in the dispatch computer so that the elevator system dispatching
+can be modified at a future time. The system shall be so designed that the modifications
+to the software shall be all that is required to revise the dispatching. It shall be further
+designed so that there will be minimum shut down time should changes be required.
+
+D.
+Security Operation:
+1.
+Card Readers and Cameras shall be installed by the elevator Subcontractor.
+2.
+Coordinate with the security subcontractor to ensure the proper wiring and space is
+provided. Interface components and software is required for tracking of registered calls
+from a central building location.
+3.
+There shall be a minimum 4-inch by 4-inch space within the car operating panels and on
+each hall station for a proximity reader as designated by the Architect.
+4.
+The indication of a card activates the designated floor car call. Pressure on the designated
+floor car button illuminates and registers a call. The elevator proceeds to the designated
+floor, completes its operation and awaits the next demand.
+5.
+Provide junction box or demarcation cabinet in control rooms to create a clean line of
+separation between the Security Subcontractor and Elevator Subcontractor.
+6.
+Fire Service and Earthquake Operation shall override Security operations.
+E.
+Independent Service: Provide controls to remove elevators from normal operation and provide
+control of the elevator from car buttons only. Car shall rise at contract speed and shall not
+respond to corridor calls. Provide seismic indication in car as required by ANSI A17.1 – 2004,
+Rule 8.4.10.1.1.
+F.
+Car Top Operation: Provide per Code requirements.
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 19
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+G.
+Emergency Recall Operation (Fire Service): Provide operation and equipment per Code
+requirements. Elevator Subcontractor shall provide relays, wiring, and terminal strips to receive
+signals from the fire alarm system.
+H.
+Ascending Car Overspeed and Unintended Car Movement Protection: Provide operation to
+prevent the elevator from striking the hoistway overhead or unintended car movement per the
+requirements of the Code.
+I.
+Seismic Operation: Provide operation and equipment per Code.
+J.
+Load Weighing: Provide automatic load weighing device set at approximately 80-percent of full
+load. The device when activated shall cause the elevator to bypass corridor calls and shall
+initiate dispatch of car at main terminal prior to elapse of normal dispatching interval. Provide
+adjustable setting from 50 to 80-percent of full load. Load weighing device shall also provide
+occupancy status for monitoring in Fire Control Panel.
+K.
+False Call Canceling: Provide device to cancel all car calls when car loading is not equal to the
+number of calls registered.
+L.
+Fan and Light Output Timer: Provide an adjustable timer (range 1 to 10-minutes) that when
+activated will turn off the fan and light within the car. The time will start when the car becomes
+inactive.
+M.
+Door Hold Operation: Provide controls and a button within main car panel that shall hold the
+doors open for an adjustable period of 30 to 90-seconds. The following shall resume normal
+door operation:
+1.
+Activation of door close button.
+2.
+Activation of any floor button within the elevator.
+3.
+Expiration of time.
+N.
+Standby / Emergency Power and Operation: Elevator Subcontractor shall provide operation as
+follows:
+1.
+When standby / emergency power is detected by an input, Passenger Elevators shall be
+returned to the main lobby one (1) elevator at a time and remain there with the doors
+open. Once all cars have been returned to the lobby, one (1) or more cars may be
+selected to run under standby power. Selection of the cars shall be done automatically.
+This automatic selection may be overridden through manual selection located in Fire
+Control Panel.
+2.
+Elevator Subcontractor shall provide software to facilitate elevator operation on standby /
+emergency power for all Service Elevators.
+3.
+The number of cars allowed to run under emergency power shall be preprogrammed.
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 20
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+2.9
+HOISTWAY EQUIPMENT
+A.
+Guide Rails: Planed steel, standard T-sections; formed rails are unacceptable. Extend rails from
+pit floor to underside of machine bedplate or cassette at top of hoistway as shown on Elevator
+Subcontractors drawings.
+1.
+Provide necessary car and counterweight rail brackets of enough size and design to
+secure minimal and compliant deflection and prevent spreading or distortion of rails
+under any condition.
+a.
+Provide individual brackets of enough length to span between the guide rail
+assembly and the building structure. Provide any additional bracing or weld plates
+as required. No additional compensation shall be granted for Elevator
+Subcontractor’s failure to provide brackets properly sized for the structure.
+b.
+If concrete embeds are to be utilized for bracket attachment, they shall be furnished
+under this section and installed by others. A job specific installation detail shall
+also be provided.
+2.
+Guide rail loads shall be shown on Elevator Subcontractors drawings. Include safety
+application, running, loading and seismic loads.
+B.
+Buffers: . Provide struts and lateral bracing as required. Mount on continuous channels secured
+to guide rails.
+C.
+Machine Assembly: Provide steel beams, channels and bearing plates to support overhead
+sheaves and rope hitches. Include any clip angles, tie rods, etc. as required to attach machine
+bedplate or cassette to surrounding structure. No additional compensation shall be granted for
+Elevator Subcontractor’s failure to provide machine interface properly sized for supports.
+Provide effective sound isolation to prevent vibration from transmitting to the overhead
+structure. Machine shall be located for accessibility from car tops and as mandated by code.
+D.
+Machine: AC Gearless traction type machine with synchronous permanent-magnet motor.
+Provide dual solenoid service and emergency disc brakes. Mount within machinery space
+located in overhead of hoistway.
+E.
+Encoder: Provide solid-state, optical, digital-count type, mechanically coupled to car, machine
+or car governor.
+F.
+Overhead Sheaves: Provide cast iron machined and grooved for diameter of suspension means
+and supported by steel beams or channels. Provide guards designed to withstand shock and
+prevent suspension means from leaving their proper grooves. All bearings are to be shielded or
+sealed.
+G.
+Compensation: As required for speed and duty. Provide encapsulated chain type and pit
+mounted sway dampening devices. Position and secure compensation chains to eliminate
+interference with car or hoistway items. Regardless of contract speed, if compensation is
+provided, pit mounted sway dampening devices shall be provided with effective sound isolation
+to limit roller noise.
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 21
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+H.
+Counterweight: Structural steel channel frame with metal filler weights. Provide metal guards
+as required by Code when compensation chain is not provided.
+I.
+Counterweight Guides: Provide manufacturers standard guides as part of model package.
+1.
+Roller type guides to provide smooth and quiet ride, substantially free of rumbles, bumps,
+vibrations, and excessive sway. Guides shall consist of three (3) or more <spring-
+mounted= rollers per guide assembly to maintain rail contact and include adjustable stops
+to control post-wise float. Rollers shall be constructed of neoprene or other similar sound
+deadening material with high "memory" characteristics, enabling them to regain their
+round shape after an elevator sits overnight or for a moderate period-of-time.
+2.
+Sliding guides required for speed and duty, either solid or swivel type with replaceable
+gibs which assure that lateral motion is minimized while maintaining rail contact.
+J.
+Counterweight Sheaves: Provide cast iron machined and grooved for diameter of ropes and
+adequately supported. Provide guards designed to withstand shock and prevent suspension
+means from leaving their proper grooves. All bearings are to be shielded or sealed.
+K.
+Suspension Means:
+1.
+Either steel type hoist ropes or belts shall be provided. They shall have the following
+characteristics:
+a.
+Provide traction steel type hoist ropes. Quantity, size, and type as required for
+duty; fasten and secure with adjustable shackles.
+b.
+Provide polyurethane coated belts with high-tensile-grade, zinc-plated, stranded
+steel cables, in adequate and appropriate size and quantity as required for duty.
+Where such belts are employed, the installation shall not be considered complete
+without demonstration of a permanent, self-calibrating means to accurately
+monitor and routinely communicate the condition of all belts as a parameter
+displayed in the primary means of controller or system diagnosis.
+L.
+Governor Ropes: Provide size and type required for duty; adequately fasten and secure.
+M.
+Governor: Overhead centrifugal type, car driven, with electrical shutdown switches. Locate the
+governor within the overhead as indicated with appropriate tail weight in pit. Provide a self-
+resetting tension-type governor. Where approved by the local authority having jurisdiction, the
+governor may be car mounted.
+N.
+Safety: Flexible guide clamp, Type B for car and counterweight where there is occupied space
+below the hoistway.
+O.
+Pit Access Ladders: Provide Code compliant pit ladder in all pits.
+P.
+Wiring:
+1.
+Conductors: Provide copper insulated wiring with flame retarding and moisture resisting
+outer cover. Install in galvanized metal wireways and raceways. Conductors from shaft
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 22
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+riser to door interlocks shall be SF-2 type or equal, maximum operating temperature 392-
+degrees F. All terminations shall be insulated to maintain integrity of wiring. Flexible
+conduit may be used for short connections. Provide 10-percent spare conductors
+throughout system.
+2.
+Traveling Cables: UL-labeled fire and moisture resistant outer braid and steel supporting
+strand as required for rise. Provide minimum of eight (8) pairs of shielded
+communication wires for security and car lighting circuits. Provide two (2) coax cables
+for CCTV camera run to a four (4) square box on the top of car. Position and secure
+cables to prevent rubbing or chafing against hoistway or car items.
+3.
+Remote Wiring: Provide wiring between control room, hoistway and remote location of
+Security and Fire Control Panel.
+4.
+Work Lights and Duplex Receptacles: Provide on top and bottom of car with lamp
+guards. Provide switch in service cabinet to control under car lighting.
+5.
+Stop Switches: Provide Code required stop switches in the pit and in the machinery space
+of machine room less elevators.
+Q.
+Seismic Protective Features: Provide per the Code requirements the following:
+1.
+Dual counterweight displacement (ring and string) devices.
+2.
+Retainer plates.
+3.
+Snag guards.
+
+2.10
+ENTRANCE EQUIPMENT
+A.
+General: Provide entrance assembly with a 1 1/2-hour rating. The equipment manufacturer or a
+vendor approved by the manufacturer shall fabricate the entrance assemblies.
+B.
+Refer to architectural drawings for details on finishes.
+C.
+Entrance Frames:
+1.
+Passenger Elevators: Fabricate 14-gauge 316L Satin Stainless Steel welded and mitered
+to form a one-piece unit.
+2.
+Service Elevators: Fabricate entrance frames from 14-gauge, 316L Satin Stainless Steel
+with bolted construction to form a one-piece unit.
+
+D.
+Entrance Signage:
+1.
+Floor Designation / Braille Plates: Provide cast, flush mounted from back side of frames,
+floor designation signs for all elevators. Locate centerline of floor designation at a height
+of 5’-0= above finished floor. The plaques shall have a white character on a black
+background and include braille per local Accessibility Guidelines. Grade or main egress
+level shall be indicated by a 2-inch diameter star to the left of the character.
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 23
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+2.
+Medical Emergency Identification: Provide cast, flush mounted medical emergency
+designation plaques identifiable by a 3-inch high "Star of Life" on each side jamb of
+Service Elevators only. Mounting provisions shall match floor designation braille plates
+and shall be flush mounted from the back side of the frame. Locate <Star of Life= at 7’-
+0= above finished floor.
+3.
+Elevator Car Identification: Provide cast Elevator Identification plates on each car at the
+main egress level for all elevators. Locate identification at 6’-0= above finished floor on
+one side, centered horizontally. Finish and mounting provisions shall match floor
+designation braille plates.
+E.
+Hoistway Sills:
+1.
+All sills shall be extended such that the door panels shall remain in the sill when the
+doors are in the fully open position.
+2.
+Provide milled stainless-steel sills at all openings with a non-slip surface.
+3.
+Sills shall be milled reveals with a #4 Satin, short grain brushed finish to match
+Architect’s sample. Reveal size, shape and spacing shall match between hoistway sill,
+cab sill and cab sill extension.
+F.
+Sill Supports:
+1.
+Passenger Elevators: Provide manufacturers standard integrated sill support angles
+designed for proper loading.
+2.
+Service Elevators: Designed for Class C loading provide 5 inch by 5 inch by ½ inch
+thick angles located a maximum of 12 inch on center or provide manufacturer’s standard
+integrated sill support angles with gusset reinforcement.
+G.
+Struts: Minimum 3-inch continuous hot rolled or formed steel angle with secure fastening to sill
+and floor beam above. Provide strut extensions for floor-to-floor heights greater than 12-0=.
+No additional intermediate horizontal support will be provided. If intermediate header support
+is required, it shall be coordinated by the Elevator Subcontractor.
+H.
+Headers: Minimum 3/16-inch formed steel designed to support hangers. Header shall be bolted
+to supporting struts.
+I.
+Dust Covers: Removable, full length manufacturer’s standard gauge steel. Covers shall be made
+in sections for convenient access to hangers.
+J.
+Fascia: Manufacturer’s standard gauge steel plates extending from top of header to sill of door
+above or beam above if there is no door opening. Provide continuous blind fascia if front
+hoistway walls are not built out where openings do not exist. Alternatively, provide a car door
+interlock that prevents the doors from being opened unless the car is within the unlocking zone.
+K.
+Hoistway Doors: Door panels shall be hollow metal flush door construction. Provide
+reinforcement by formed vertical sections running full height of door. Doors shall be provided
+with two (2) removable, non-metallic gibs with fire tabs, located at the leading and trailing edge
+of the door panel. Center opening doors shall be provided with full length rubber astragal at
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 24
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+leading edge of each door. Finishes to extend completely around door panels and overlap a
+minimum of 1-inch on the hoistway side. There shall be no visible exposed or protruding
+fasteners.
+1.
+Passenger Elevators: Minimum14 gauge 316L Satin Stainless Steel at all openings.
+2.
+Service Elevators: Minimum14 gauge 316L Textured Stainless Steel at all openings.
+L.
+ Floor Numbers: Elevator hoistway doors shall have their floor number located on the hoistway
+side, placed at intervals such that a person in a stalled elevator, upon opening the car door, can
+determine the floor position. Floor numbers shall be no less than 4-inches in height.
+M.
+Sight Guards: Provide for each landing door panel, constructed of Manufacturer’s standard
+gauge furniture steel. Finish shall match doors.
+N.
+Hangers: Provide two-point suspension sheave type with provisions for vertical and lateral
+adjustments. Sheaves shall be minimum 2 1/4-inches in diameter with sealed ball or roller
+bearings.
+O.
+Tracks: Cold drawn steel shaped and finished to permit free movement of sheaves. Bottom of
+track shall be in contact with up thrust roller.
+P.
+Closers: Sash, spring or spirator type.
+Q.
+Interlocks: Electrical contacts shall prevent the operation of the elevator by normal operating
+devices unless hoistway doors are closed or within tolerances allowed by Code.
+2.11
+CAR EQUIPMENT
+A.
+Loading Classification and Requirements:
+1.
+All elevators shall be designed for Class C-3 loading following the design data and
+formulas identified in the Code. Including, but not limited to, the car frame, platform,
+and guides.
+B.
+Car Frame: Welded or bolted steel channel construction; material thickness to be manufacturers
+standard for duty.
+C.
+Car Sheaves: Same as counterweight sheaves.
+D.
+Platform: Isolated type, steel frame with steel subfloor, fireproof on underside. Cab shell
+platform shall be a minimum of ¼ inch thick reinforced steel plate. Provide under-car work
+lighting and connect to a switch under the car and in the service cabinet.
+E.
+Car Guides: Provide guides as part of standard model package. Roller type guides shall provide
+smooth and quiet ride, substantially free of rumbles, bumps, vibrations, and excessive sway.
+Guides shall consist of three (3) or more <spring-mounted= rollers per guide assembly to
+maintain rail contact and include adjustable stops to control post-wise float. Rollers shall be
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 25
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+constructed of neoprene or other similar sound deadening material with high "memory"
+characteristics, enabling them to regain their round shape after an elevator sits overnight or for a
+moderate period-of-time.
+F.
+Toe Guards: Per Code.
+G.
+Hangers: Provide two-point suspension sheave type with provisions for vertical and lateral
+adjustments. Sheaves shall be minimum 2 1/4-inches in diameter with sealed ball or roller
+bearings.
+H.
+Tracks: Cold drawn steel shaped and finished to permit free movement of sheaves. Bottom of
+track shall be in contact with up thrust roller.
+I.
+Door Protection:
+1.
+Infrared detector: Provide an infrared door edge that projects an infrared curtain of light
+guarding the door opening. Arrange to reopen doors if one (1) beam of the curtain is
+penetrated. Unit shall have Transmitters and Receivers spaced at a minimum distance to
+provide the maximum amount of protection within the height of the doorway. Systems
+which have the availability to turn off or on individual zones within the curtain will not
+be allowed.
+2.
+Differential door timing feature: Provide adjustable timers to vary the time that the doors
+remain open in response to a car or hall call. The doors shall remain open for one second
+in response to a car call and five to eight-seconds for a hall call. This time shall be
+reduced to 1/2-second if the proximity detector is interrupted. The doors shall remain
+open if passengers are crossing the threshold.
+3.
+Nudging: When doors are prevented from closing for 20-seconds due to failure of the
+proximity device or obstruction, the doors shall close at reduced speed and a buzzer shall
+sound.
+J.
+Door Operators: Provide heavy-duty master electric power door operators to automatically open
+and close the car and hoistway doors. The operator shall utilize velocity and distance feedback
+speed control. The doors shall be capable of smooth and quiet operation without slam or shock.
+1.
+Opening speed shall not be less than 3.0 FPS with reversal in no more than 2 1/2-inches.
+2.
+An auxiliary-closing device shall automatically close hoistway doors if car leaves the
+landing zone.
+3.
+In case of power interruption, it shall be possible to manually operate car and hoistway
+doors from inside the cab, if the car is within the landing zone.
+K.
+Car Door Contacts: Electrical contacts shall prevent the operation of the elevator by normal
+operating devices unless car doors are closed or within tolerances allowed by Code.
+L.
+Door Restrictors: Provide door-restricting devices to prohibit the opening of car doors by more
+than 4-inches when outside of the unlocking zone.
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 26
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+M.
+Car Sills: Provide properly dimensioned sill blocking to interface with finished flooring inside
+cab.
+1.
+All sills shall be extended such that the door panels shall remain in the sill when the
+doors are in the fully open position.
+2.
+Provide sill extensions to face of front return.
+3.
+Provide milled stainless-steel sills and matching sill extensions to align edge of sill with
+face of front returns.
+4.
+Sills shall be milled reveals with a #4 Satin, short grain brushed finish to match
+Architect’s sample. Reveal size, shape and spacing shall match between hoistway sill,
+cab sill and cab sill extension.
+5.
+Sills shall be grouted solid to the car platform
+2.12
+CAR ENCLOSURE:
+A.
+The equipment manufacturer or a vendor approved by the manufacturer shall fabricate the car
+enclosure. Provide the following features:
+1.
+The enclosure shall be adequately reinforced and ventilated to meet Code requirements.
+Provide effective sound-deadening mastic to exterior of all enclosures.
+2.
+All elevators shall be designed to accommodate the finishes as detailed on the
+architectural drawings.
+3.
+Cab interiors shall be custom as detailed on architectural drawings.
+4.
+Shell:
+a.
+Passenger Elevators: Provide minimum 14-gauge sheet steel with powder coated or
+baked enamel interior finish. Arrange shell width and depth to accept removable
+panels as detailed by Architect. Ensure light-proof joints and gasket or secure to
+prevent transmission of noise generated by the movement or minor contortion of
+the cab. .
+b.
+Service Elevators: Provide minimum 14-gauge sheet steel with powder coated or
+baked enamel interior finish.. Ensure light-proof joints and gasket or secure to
+prevent transmission of noise generated by the movement or minor contortion of
+the cab. Provide vent slots in top and bottom of the shell as required by Code.
+5.
+Canopy:
+a.
+Passenger Elevators: Provide 10 feet-0 inch nominal clear height under canopy.
+Adequately reinforced to be Code-compliant. Gasket to prevent noise with normal
+cab movement. Underside of canopy to be baked enamel to match custom color as
+selected by Architect. Arrange for hinged top emergency exit including lock as
+required by Code.
+b.
+Service Elevators: Provide 10 feet-0 inch nominal clear height under canopy.
+Adequately reinforced to be Code-compliant.. Gasket to prevent noise with normal
+cab movement. Underside of canopy to be finished in 316L Satin Stainless Steel.
+6.
+Interior Panels:
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 27
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+a.
+Provide mounting method that prevents rattling or vibration. Installation to
+facilitate authorized removal with a specialized tool to allow for repair or
+replacement of new cab panels without requiring access to the hoistway or outside
+the car enclosure.
+b.
+.
+c.
+Service Elevators: Provide removable stand-off panels of Class A fire-rated
+construction. Panels to be faced and edged in textured 316L Textured Stainless
+Steel.
+d.
+Vent slots at bottom of shell shall be located so that they are concealed behind
+custom panels.
+
+7.
+Suspended Ceiling and Lighting:
+a.
+Passenger Elevators: As detailed on architectural drawings.
+b.
+Service Elevators: No drop ceiling required. LED light fixtures shall be flush with
+inside canopy surface, designed and reinforced as to allow for routine car top
+access without deflection, guarded or covered to avert tripping hazards, and
+conducive to routine traffic for maintenance and repairs.
+c.
+Service Elevators: LED light fixtures shall be flush with inside canopy surface,
+designed and reinforced as to allow for routine car top access without deflection,
+guarded or covered to avert tripping hazards, and conducive to routine traffic for
+maintenance and repairs.
+d.
+Lighting fixtures shall be designed to protect passengers from dislodged bulbs or
+broken glass while providing Code compliant illumination. Arrange for hinged top
+emergency exit including lock as required by Code.
+e.
+For Passenger Elevators, if they are selected to be utilized for Construction Use,
+provide temporary lighting fixtures for use during the Construction Use period.
+Provide provisions for removal or relocation of fixture before custom cab interiors
+are installed.
+8.
+Floor Covering:
+a.
+Cab shell platform shall be a minimum of ¼ inch thick reinforced steel plate.
+b.
+Provide two layers of ¾ inch marine grade plywood which shall be continuously
+glued together and anchored with bolts countersunk through the plywood and steel
+plate cab shell for the subfloor.
+c.
+Passenger Elevators: Flooring shall be ¾ inch thick epoxy Terrazzo floor finish to
+be provided under the flooring section (not by elevator Subcontractor). Allow a
+minimum 2-inch platform recess Configure equipment and cab to accept the
+thickness and weight of the flooring, tile setting, sub-floor, and all finishes.
+d.
+Final sill height and total flooring weight to be confirmed before fabrication.
+e.
+Service Elevators: Provide 316L stainless steel checker plate as specified. Install
+at Factory prior to shipment or install before cab shell. All fastening hardware to
+be countersunk.
+9.
+Front Return Panels and Entrance Columns: Provide a 316L satin stainless-steel finish.
+Adequately brace to prevent bowing and flexing. Only cars with front and rear openings
+shall have auxiliary return panels
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 28
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+a.
+Passenger Elevators shall be a minimum 14 gauge.
+b.
+Service Elevators shall be a minimum 14 gauge.
+c.
+All elevators shall have fronts shall be full width swing type to allow access to car
+operating panel wiring and fixtures. Mini or partial swing returns shall not be
+provided. Provide cabinets for special operating features and flush mounted
+speaker grills for the <Hands Free= telephone and communication systems required
+by these specifications. 316L Satin Stainless Steel
+10.
+Transoms: Manufacturers standard sheet steel. Finish and edging to match front return
+panels and entrance columns for all elevators.
+11.
+Car Door Panels: Door panels shall be hollow metal flush door construction,
+manufacturer’s, furniture steel. Provide reinforcement by formed vertical sections
+running full height of door. Doors shall be provided with two (2) removable, non-metallic
+gibs with fire tabs, located at the leading and trailing edge of the door panel. Center
+opening doors shall be provided with full length rubber astragal at leading edge of each
+door. Finishes to extend completely around door panels and overlap a minimum of 1-
+inch on the hoistway side. There shall be no visible exposed or protruding fasteners.
+a.
+Passenger Elevators: Minimum 14 gauge with a 316L Satin Stainless Steel finish
+b.
+Service Elevators: Minimum 14 gauge with a 316L textured stainless-steel finish.
+12.
+Handrails: All Elevators:
+a.
+Integrate handrail installation to facilitate authorized removal with a specialized
+tool to allow for repair or replacement of new cab panels without requiring access
+to the hoistway or outside the car enclosure. Provide adequate mounting to comply
+with strength as required by Code. Provide two (2) rows of 4-inch bar type
+handrails / bumper rails located at 8 inches (per SDIA Performance specifications)
+above finished floor on all three (3) walls.
+b.
+Handrails and bumper rails shall be fastened to wall a maximum of 12 inches on
+center and shall be removable from inside the car.
+c.
+Top handrail shall be 1 ½ inches outside diameter 316L stainless steel tube with a
+#6 Satin short grain brushed finish to match Architect’s sample. End caps are to be
+welded flush and ground smooth.
+d.
+Bottom rail: 4-inch bar type handrails / bumper rails located at 8 inches above
+finished floor on all three (3) walls. Bar thickness shall be 3/8-inch.
+
+13.
+Pads and Hooks: Pads shall be specifically sized for the cab interiors and front returns for
+this project. Pad hooks shall be conspicuous type (buttons) where there are no stand-off
+panels and inconspicuous type (<S=) hooks for walls with stand-off panels. Pads shall
+cover all walls and front return panels and include cutouts for access to the operating
+fixtures. Provide four sets for the passenger elevators and four sets for the service cars:
+total of 8 sets of pads.
+14.
+Ventilation:
+a.
+Passenger Elevators: Provide Morrison Products Inc three-speed Model AA #
+0601058 or approved equal ventilation fans mounted to car canopy on isolated
+rubber grommets and with adequate vibration isolation material to prevent
+perceptible vibration inside of car when fan is operating at top speed.
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 29
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+b.
+Service Elevators: Provide manufacturers standard two-speed exhaust fan. Provide
+adequate vibration isolation material to prevent perceptible vibration inside of car
+when fan is operating. Provide grille to match canopy finishes.
+15.
+Emergency Car Lighting and Alarm System:
+a.
+Unit shall provide emergency light in car upon failure or interruption of normal car
+lighting. Device shall be placed on car top and power a portion of normal car
+lighting. Swing panel mounted units are not acceptable. Emergency lighting unit
+shall provide a minimum illumination of 0.2-foot-candle at 4 feet-0 inches above
+car floor approximately 1 feet-0 inches in front of car operating panel for not less
+than 4-hours. Battery charger shall be capable of restoring battery to full charge
+within 16-hours after resumption of normal power. Provide an external means for
+testing battery, lamps, and alarm bell.
+b.
+If any Passenger Elevators are selected to be utilized for Construction Use, provide
+a temporary emergency lighting fixture for use during the Construction Use period.
+Provide provisions for removal and / or relocation of fixture before interiors are
+installed.
+2.13
+SIGNALS AND FIXTURES
+A.
+Provide signal fixtures as detailed by the Architect or provide manufacturer’s premium model
+fixtures, selected from product brochures depicting typical devices and arrangements.
+Company logos shall not be visible.
+B.
+Car Operating Panels:
+1.
+Those cars with front openings shall have one panel and those with rear openings shall
+have two panels. , Front return panels shall have continuous hinge or three piano hinges
+with concealed three-point latching. Panels shall have illuminating pushbuttons numbered
+to conform to floors served. Include service cabinet.
+2.
+Buttons shall light to show registration and extinguish when car stops in response to a
+call. Buttons shall have a minimum dimension of 3/4-inch, be raised 1/8-inch plus or
+minus 1/32-inch above the surrounding surface, be of square shouldered design, and have
+a detectable mechanical motion. A minimum clear space of 3/8-inch or other suitable
+means of separation shall be provided. Buttons shall have 316L Satin Stainless Steel
+button face with illuminating halo. Provide LED illumination.
+3.
+316L Satin Stainless SteelBraille / Arabic designations shall be identified by a minimum
+of 5/8-inch Arabic numeral, standard alphabet character, or standard symbol immediately
+to the left of the control button. Braille shall be located immediately below the numeral,
+character, or symbol. Controls and emergency equipment shall be identified by raised
+symbols, including but not limited to, door open, door close, alarm bell and telephone.
+The call button for the main entry floor shall be designated by a raised star at the left of
+the floor designations. Braille and Arabic designations shall be cast with flush mounting
+to match entrances. The plaques shall have raised white colored numerals on a black
+background.
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 30
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+4.
+Panel shall include an Alarm Bell, Door Open, Extended Door Hold and Door Close
+buttons. All operating controls shall be located at 4 feet-0 inches above the car floor, the
+alarm button shall be located no lower than 2 feet-11 inches above finished floor height.
+5.
+In all main panels, provide a fire emergency service cabinet containing: Phase II
+emergency fire service switch, fire jewel, fire operating instructions on the inside face of
+the cabinet door, Call Cancel button and Door Open and Door Close buttons. Cabinet
+door shall be flush with the faceplate with hairline joints. <Firefighters Operation= shall
+be engraved on visible face of door in red text no less than 7/16-inch. Firefighter
+instructions shall be engraved on inside face of door
+6.
+All main panels shall have a key switch adjacent to each floor pushbutton as well as
+proximity readers to allow for a lock out provisions if necessary.
+7.
+In all main panels, provide an intercom grill and flush mounted speaker grill for the
+<Hands-free= telephone / communication system.
+8.
+Provide a lockable service cabinet with concealed hinges. Cabinet door shall be flush
+with hairline joints. Door shall include a flush integral certificate frame for viewing the
+operating permit. The window shall be constructed of durable Plexiglas or similar
+material and be accessible from backside of locked door. Minimum window size to be 7-
+inch wide by 3-inch high and can be orientated vertically. Cabinet shall contain the
+following controls:
+a.
+In-car light switch.
+b.
+<Push / Pull=(pull to stop) type emergency stop switch.
+c.
+Fan / Blower switch.
+d.
+Inspection (hoistway access enable) switch, conforming to the ANSI Code.
+e.
+Independent service switch.
+f.
+Emergency light test button.
+g.
+Duplex 120-volt, A.C. G.F.C.I convenience outlet.
+h.
+Light switch for under platform light.
+9.
+Engrave all main panels, above the Position Indicator, with the following:
+a.
+Elevator number. Minimum 1/2-inch lettering.
+b.
+Elevator capacity. Minimum 1/4-inch lettering.
+c.
+Building Name and Address.
+d.
+Freight loading classification and description.
+e.
+Fire Instruction signage.
+f.
+All Code Required Signage/Verbiage Shall be engraved on the car operating panel.
+C.
+Car Position Indicators with LED Digital readouts:
+1.
+Provide LED digital readout type with 2-inch minimum indications. Locate at top of main
+and auxiliary panels at a height no lower than 6 feet-6 inches above the finished floor.
+Indicator shall provide car position and direction of travel and include an adjustable
+electronic floor passing chime. As the car passes or stops at a floor served by the elevator,
+the corresponding designation shall illuminate, and an audible signal will sound. The
+audible signal shall be no less than 20-decibles with a frequency no higher than 1500 Hz.
+D.
+Hall Call Stations: With engraved faceplates for In Case of Fire Signs and Fire Instructions
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 31
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+1.
+Provide riser(s) of hall call stations as specified in outline. Hall call station shall include
+11-gauge faceplate. The centerline of riser (call button or centerline of two-button
+pattern) to be located at 3 feet-6 inches above the finished floor. Buttons shall have a
+minimum dimension of 3/4-inch, be raised 1/8-inch plus or minus 1/32-inch above the
+surrounding surface, be of square shouldered design, and have a detectable mechanical
+motion. A minimum clear space of 3/8-inch separation shall be provided. Provide LED
+illumination.
+2.
+Provide a 3-position Code required Phase I Fire Service key switch, visual indicator, and
+operational instructions. Integrate devices and signage with hall call station. Fire
+instructions shall be engraved minimum 1/8-inch high on the faceplate.
+3.
+Provide emergency power indicator at the main lobby for each group of elevators;
+integrate with the Phase I Fire Service key switch into same faceplate. Refer to Fire
+Control Panel section for emergency power selector switches.
+4.
+Faceplate edges shall be relieved. Finish shall be 316L Satin Stainless Steel No. 4
+brushed finish. Engraving shall be epoxy filled. Integral signs shall be as follows:
+a.
+Fire Exiting Instructions: Minimum 1/2-inch lettering.
+b.
+Phase I Fire Service Instructions: Minimum 1/8-inch lettering.
+5.
+Provide key switches or proximity readers in all of the hall pushbutton stations.
+6.
+Provide concealed fasteners; exposed fasteners shall not be provided. Finish matching
+faceplate.
+E.
+Direction Indicators: Provide direction indicators at all floors
+1.
+Hall Lanterns: Provide plug-in, faceless type for passenger elevators and vandal resistant
+for service elevators. Provide UP and DOWN lanterns at intermediate landings, single
+lantern at terminal landings. Electronic chimes for each lantern shall sound once for up
+and twice for the down direction of rise. The lantern shall illuminate for corresponding
+direction of car rise and the chime shall sound when the elevator is at a predetermined
+distance from the scheduled floor stop. The location of the lanterns shall be as directed by
+Architect.
+F.
+Hoistway Access Switches: Provide without faceplate in entrance frame side jamb at all top and
+bottom terminals where walk in pits are not provided. Faceplate finish to match jamb finish hall
+buttons.
+2.14
+FIRE CONTROL PANEL
+A.
+Provide a common control panel for all elevators and escalators, locate as directed by Architect.
+All wiring and interconnection of devices is to be installed under this section. Panel to contain
+the following devices and indicators:
+1.
+Digital position and direction indicator per elevator.
+2.
+Fireman's return switch per group or individual elevator as required.
+3.
+Jewel to indicate if doors are open at the fire egress floor per elevator.
+4.
+Fire service jewel per group or individual elevator as required.
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 32
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+5.
+Jewel indicating if the car is occupied per elevator.
+6.
+Engraved instructions for fire service operation.
+7.
+Emergency power selector switches per group.
+8.
+Emergency power status indicators.
+2.15
+ENGINEERS CONTROL PANEL
+A.
+Provide Per Design And Construction Standards. Provide all necessary integration and
+compatibility with the airport monitoring system.
+B.
+Provide one panel for all elevators and escalators.
+C.
+Provide a single LCD/CPU with a minimum 19 inches diagonal flat non-glare screen mounted
+as required in the security desk. Coordinate with Security Subcontractor on location and size of
+display. Display operational functions and security features as required including but not
+limited to car and hall calls, car bypass functions, security operation, ability to turn car on and
+off as well as return the car to the lobby.
+D.
+Provide the following features: (Design and Construction Standards)
+1.
+Digital position and direction indicator per elevator.
+2.
+Engrave faceplate markings in panel and fill with paint in contrasting color.
+3.
+Include remove from service switch for each elevator which then calls car to ground floor
+and parks car with doors open.
+4.
+Fireman's return switch per group or individual elevator as required.
+5.
+Jewel to indicate if doors are open at the fire egress floor per elevator.
+6.
+Fire service jewel per group or individual elevator as required.
+7.
+Jewel indicating if the car is occupied per elevator.
+8.
+Emergency power selector switches per group.
+9.
+Emergency power status indicators.
+E.
+The stations shall be connected to the monitoring system to display information such as car
+position, car status, emergency power, fire recall, all operational functions and traffic
+information (up and down calls, etc.)
+F.
+All wiring to each of the panel shall be included in this scope of work.
+2.16
+MONITORING STATION
+A.
+Provide Per Design And Construction Standards
+B.
+Provide a single LCD / CPU with a minimum 19-inch diagonal flat screen mounted as required
+located as directed. The monitor shall be capable of monitoring and displaying information for
+all elevators and escalators. Separate panels for freight elevator or escalators shall not be
+provided.
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 33
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+C.
+Coordinate with Contractor / Architect for location and size of display. Display operational
+functions and security features as required including but not limited to car and hall calls, car
+bypass functions, security operation, ability to turn car on and off as well as return the car to the
+lobby. Data collection, data storage, and real-time monitoring portion of the system shall be
+based on Microsoft Windows and be able to run on current Windows operating systems.
+D.
+Each elevator shown on the plan view shall be individually displayed and shall be visible on the
+monitoring system display terminal without the need to scroll. Each individual unit, when
+operating <normally,= shall be displayed in green. In the event of a malfunction of any
+individual unit, the unit shall be displayed by a red blinking light on the monitoring system
+display. Units which are intentionally placed out of service shall be shown as yellow in the
+display mode. When malfunctioning units, or units intentionally placed out of service are
+returned to normal operation the graphical representation for that unit(s) shall automatically
+return to green. All monitored units shall be visible from any monitoring terminal on the
+network. Entry into the network shall be multi-level password protected.
+E.
+System Capabilities:
+1.
+The system shall be capable of real time display of all monitored status points on all
+monitored equipment. Fault and event notification screens and audible alarms shall be
+immediately displayed on selected monitoring stations. Different fault and event tables
+shall be defined on a per-bank basis. The system shall collect and store all status, fault,
+and event information for later reporting and analysis. The system shall provide
+statistical analysis of hall call response times, traffic patterns, fault conditions, service
+logs, and security usage in graphical and tabular format.
+2.
+The system shall maintain a record of every status point change occurring on the
+monitored equipment and provide the ability to replay these events in a simulation later in
+real time, slow speed, single step, reverse, or fast forward. This information shall be
+retained for a period of at least twenty-four (24) weeks and a mechanism shall be
+provided whereby this information may be archived.
+3.
+The system shall store traffic fault and statistical data for a period of at least three (3)
+years.
+4.
+The system shall log error type, car number, floor position, and major system status
+points whenever a fault or logged event occurs.
+5.
+The system shall provide interactive control of certain features provided in the elevator
+control system. These features may be revised as the requirements of the building
+change.
+6.
+Some of these interactive controls may include, but are not limited to: Security floor
+lockouts, entering car and hall calls, Firefighters‟ service, lobby recall, VIP service, etc.
+7.
+In the case of a power failure the system shall be capable of connecting to emergency
+power back-up unit. The loss of power shall not affect any stored data. The system shall
+have the capability to detect the loss (disconnect) of any individual unit from the
+monitoring system by periodically polling all units to ensure that normal communications
+between the unit(s) and the terminals / server are maintained.
+8.
+The system will automatically re-boot the program and continue to operate after a power
+loss or other system malfunction.
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 34
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+2.17
+COMMUNICATION SYSTEM
+A.
+Shall be compliant with CBC Section 3001.2 with video display
+B.
+Provide automatic dial voice, video and text communication system located in the main swing
+panel as required by California Building Code, Section 3001.2. A video display shall suitably
+identify activation of auto dialer for the visually and hearing impaired. Speaker shall be
+mounted without faceplate or visible fasteners and located behind the main panel. A camera
+shall be mounted in the front return to establish a visual link between the car and remote
+communication center. Voice and video communication shall be capable of being heard and
+viewed from any location within the car enclosure.
+C.
+Telephone System: Provide automatic dial <Hands-Free= telephone station located in the main
+car operating panel. A button shall suitably identify activation of auto dialer for the sight
+impaired. Speaker shall be mounted without faceplate or visible fasteners and located either
+behind the main panel.
+1.
+A push button to actuate the two-way communication means shall be provided in car
+operating panel. The push button shall be visible and permanently identified as <HELP.=
+The identification shall be on or adjacent to the <HELP= button. When the push button is
+actuated, the emergency two-way communication means shall initiate a call for help and
+establish two-way communications.
+2.
+A visual indication on the same panel as the <HELP= push button shall be provided, that
+is activated by authorized personnel, to acknowledge that two-way communications link
+has been established. The visual indication shall be extinguished when the two-way
+communication link is terminated. Engrave <BLINKING INDICATES CALL IS
+ANSWERED, HELP IS ON THE WAY= adjacent to visual indication in main panel.
+3.
+A video screen shall be provided within the cab, that is activated by authorized personnel,
+to acknowledge that a communications link has been established. The visual indication
+shall allow text messaging to be initiated from the communication center. A means shall
+be provided in the elevator cab to allow acknowledgement of receiving the text message.
+A video screen shall provide indication that chat, and video connection has been initiated.
+D.
+Provide wiring from car to telephone terminal box in elevator machine room.
+E.
+Provide permanent means of communication between the first responder emergency personnel
+location and the elevator car. This communication shall be able to interrupt calls which may be
+underway between the passenger and the 24/7 answering service.
+F.
+Mount fire alarm speaker on each car top and run required wiring from speaker to life safety
+terminal box in machine room. Speakers to be provided by fire alarm Subcontractor.
+G.
+Mount security camera in each elevator cab and run required wiring from car top junction box
+to security camera terminal box in machine room.
+H.
+Include the installation of Life Safety speaker within the elevator cab. Provide wiring from car
+to Life Safety junction box in machine room.
+September 12, 2022
+90% Design
+
+Syska Hennessy Group
+February 17, 2022
+SDIA T1RP-Terminal 1
+005.2821.000
+60% Design
+San Diego, California
+SDCRAA #413001
+
+Spec. #: 3231
+
+
+
+Machine Room Less Elevators Passenger and Service
+14 21 00 - 35
+Copyright 2021 Syska Hennessy Group
+San Diego Aviation Alliance (SDAA arrive)
+--- END PART 2 TEXT ---

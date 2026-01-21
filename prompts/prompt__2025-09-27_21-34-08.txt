@@ -1,0 +1,391 @@
+You are a specialized Construction Specification Analyst. Using the instructions, rules, and examples provided, extract all product information from the specification text below.
+
+                
+### **INSTRUCTION**
+
+From the provided construction specification text, extract all distinct products into a single JSON array. A product is a specific, orderable item, uniquely identified by its name combined with critical technical attributes like type, grade, size, or model number.
+
+Recheck if all the distinct products are extracted. Manufacturers and basis of design are not to be considered as products.
+
+For each product identified, create a JSON object with the following four keys:
+1.  `product_name`
+2.  `technical_specifications`
+3.  `manufacturers`
+4.  `reference`
+
+---
+
+### **Core Principle: Product Consolidation**
+
+* A product's identity is defined by its **technical characteristics** (e.g., "Gypsum Board, Type X, 1/2 inch"), **not by its manufacturer**.
+* If you encounter the same product mentioned multiple times with different approved manufacturers, you **MUST** consolidate this information into a **single product entry**.
+* **Action:** Aggregate all manufacturers for a single product into its `manufacturers` field. **DO NOT** create a new, separate product object for each manufacturer listed.
+
+---
+
+### **Field Instructions**
+
+1.  **`product_name`** `(string)`
+    * **Action:** Create a unique, descriptive name by combining the product's common name with its key identifiers (e.g., ASTM standard, type, grade, size). **Crucially, do not include manufacturer names in the `product_name` itself.**
+    * **Example:** `"Carbon Steel Bolts and Studs (ASTM A307 Grade A)"`
+
+2.  **`technical_specifications`** `(array of objects)`
+    * **Action:** Create an array of simple, flat key-value objects. Each object must represent **one single, individual property**. Make sure that you extract maximum amount of product information from the source text.
+    * **CRITICAL RULE - DE-AGGREGATION:** If a source sentence or list describes multiple properties, you **MUST** deconstruct it into separate key-value pairs.
+    * **Example:**
+        * **Source Text:** `"Door curtain: Galvanized steel, flat profile slats, 0.028 inch thick."`
+        * **Correct JSON Output:**
+            ```json
+            [
+              { "Door Curtain Material": "Galvanized steel" },
+              { "Door Curtain Slat Profile": "Flat profile slats" },
+              { "Door Curtain Slat Thickness": "0.028 inch" }
+            ]
+            ```
+    * **Constraint:** Values **MUST** be simple (string, number, boolean). **DO NOT** use nested objects.
+
+3.  **`manufacturers`** `(object)`
+    * **Action:** List company names under `base` and `optional` keys (e.g., `{ "base": ["Manufacturer A"], "optional": ["Manufacturer B"] }`).
+    * **Constraint:** If no manufacturers are listed, use an empty object `{}`.
+
+4.  **`reference`** `(string)`
+    * **Action:** Provide the original text snippet(s) from which the data was extracted, formatted as plain text.
+    * **Constraint:** Preserve the source text's original structure, indentation, and hierarchy using plain text formatting only. also ensure you select entire reference content, if you extract product data from a, b, g points in 1 section then you should select entire reference content from a, to g points in 1 section.
+
+---
+
+### **Final Output Rules**
+
+* **JSON Array Only:** The entire response **MUST** be a valid JSON array. It must start with `[` and end with `]`. Do not add any explanations, notes, or markdown fences (` ```json `).
+* **CRITICAL: NO MARKDOWN:** Do NOT wrap your response in ```json``` markdown blocks. Return ONLY the raw JSON array.
+* **CRITICAL: NO EXTRA TEXT:** Do NOT include any text before or after the JSON array. The response should start with `[` and end with `]`.
+* **Completeness & Accuracy:** Extract **ALL** products and their variations. Use the exact wording from the source text and do not infer information.
+* **Plain Text Only:** All fields must contain plain text only. No HTML tags are allowed in any field.
+* **JSON Validation:** Ensure your JSON is valid and complete. If you run out of space, prioritize completing the current product object rather than starting a new incomplete one.
+
+
+
+
+                Now analyze the following Part 2 - PRODUCTS section:
+
+                ```text
+                PART 2 - PRODUCTS
+
+2.1 MANUFACTURERS
+A. Product of firms regularly manufacturing comparable elevators in satisfactory operation for >= 5 years.
+B. Qualified Bidders / Models:
+1. KONE U.S. / MonoSpace 700
+2. Mitsubishi Electric Corporation / DiamondTrac
+3. Otis Elevator Company / Gen2 – Overslung
+4. Schindler Elevator Corporation / 5500AE
+5. TK Elevator / synergy Performance Series
+C. Models listed for reference; all specification requirements must be met.
+D. Substitute models require prior written agreement; bids without prior approval may be rejected.
+
+2.2 MATERIALS
+A. Aluminum: Extrusions per ASTM B221.
+B. Plywood Backing: PS-1-83, A-D Interior Grade Douglas fir. Fire treat per AWPA with water-soluble fire-retardant; U.L. FR-S fire hazard classification.
+C. Sheet Steel (Painted): ASTM A1008; cold-rolled, stretcher-leveled, furniture grade; free from defects.
+D. 316L Satin Stainless Steel: Per ASTM A167, Type 316L series, with finish as specified.
+E. 316L Textured Stainless Steel - at service elevator: Per ASTM A167, Type 316, Rigidized or approved equal textured pattern 5WL®, with satin finish as specified.
+
+2.4 PASSENGER ELEVATOR LIST
+A. Refer to Vertical Transportation Drawings.
+
+2.5 OUTLINE OF EQUIPMENT
+A. Passenger Elevators
+1. Contract Load, in Pounds: 5,000
+2. Contract Speed, in FPM: 200
+3. Class of Loading: C-3
+4. Machine Location: Overhead in hoistway
+5. Machine Type: Gearless
+6. Type of Control: AC variable frequency
+7. Operation: Duplex Selective Collective
+8. Stand-by power: All elevators connected.
+9. Car and Hoistway Door Operation: Power operated, high-speed.
+10. Door Protection: Infrared Detector
+11. Pit Access Ladder: Provide and install for each elevator.
+12. Hoistway Doors: Min 14-gauge 316L Satin Stainless Steel at all floors with Sight Guards.
+13. Hoistway Frames: Min 14-gauge 316L Satin Stainless-Steel Finish, Mitered and Welded construction.
+14. Hoistway Sills: Extend full width (doors remain in sill when open). Milled stainless-steel sills at all openings with non-slip surface. Hoistway and car sill reveals to match.
+15. Hoistway Sill Angles: Manufacturer’s standard.
+16. Cab Enclosure: 14-gauge car shell, designed for architectural finishes. Handrail and Bumper Rails on all walls. Cab Fronts: 316L Satin Stainless Steel, min 14 gauge. Baked enamel car shell.
+17. Car Sills: Milled stainless-steel sills, matching sill extensions to align with front returns. Extend full width (doors remain in sill when open). Reveals match hoistway sills. Flooring: 2-inch recess for epoxy terrazzo (by flooring contractor) over sub-floor. Equipment/cabs to accept full flooring/sub-floor weight. Subfloor: 2 layers marine grade plywood.
+18. Car Operating Panels: Main with engraved signage and service cabinet. Auxiliary panels only on elevators with front and rear openings.
+19. Direction Indicators: Hall lanterns at all floors.
+20. Hall Stations: Single Riser per Group; In Case of Fire and Fire Instruction signs engraved on faceplates.
+21. Fire and Engineer’s Control Panels: As specified.
+22. Monitoring System: As specified.
+23. Output Timers: Cab Fan and Light.
+24. Emergency Car Light: Powers normal car lighting.
+25. Pads and Hooks: Provide four sets.
+26. Work Lights and Receptacles: On top of each cab and under car platform, with activation switches in service cabinet.
+27. Communication Systems: Hands-free, two-way video communication (2019 code compliant) for emergency personnel/first responders.
+28. Weather proofing: For exterior-exposed elevators (VT Cores 3 & 4: Elevators 6, 7, 16, 17, 19, 20, 21 & 22): Galvanized metal in hoistway or 3 coats rust inhibiting paint on non-running surfaces. Galvanized sheet steel cover for door operator. Hoistway switches in NEMA 4 or equal watertight enclosures. Back surfaces of hoistway/car doors: 316L Satin Stainless Steel or 3 coats rust inhibiting paint.
+
+B. Service Elevators
+1. Elevator Use: Service
+2. Contract Load, in Pounds: 5,000
+3. Contract Speed, in FPM: 200
+4. Class of Loading: C-3
+5. Machine Location: Overhead in hoistway
+6. Machine Type: Gearless
+7. Type of Control: AC variable frequency
+8. Operation: Duplex Selective Collective for two car groups; Simplex Selective Collective for single cars.
+9. Pit Access Ladder: Provide and install for each elevator.
+10. Car and Hoistway Door Operation: Power operated, high-speed.
+11. Door Protection: Infrared Detector.
+12. Hoistway Sills: Milled stainless-steel sills, non-slip surface, full width (doors remain in sill when open). Car and Hoistway sill reveals to match.
+13. Hoistway Sill Angles: 5-inch x 5-inch x ½ inch angles or manufacturer standards reinforced with gusset angles fastened max 12 inches on center.
+14. Hoistway Entrance: Doors min 14-gauge 316L Textured Stainless Steel; Frames min 14 gauge bolted with 316L satin stainless-steel finish.
+15. Cab Enclosure: Car walls min 14 gauge with applied min 14-gauge 316L Textured Stainless Steel. Fronts min 14-gauge 316L Satin Stainless Steel. Handrail and Bumper Rails on all walls. Milled 316L stainless-steel sills, matching sill extensions to front returns. Sills full width (doors remain in sill) and extend to front return face. Hoistway/car sill reveals to match.
+16. Car Flooring: Finishes as specified. 2-inch recess for finished floor. 316L Satin Stainless Steel checker plate over cab sub-floor. Subfloor: 2 layers marine grade plywood.
+17. Car Operating Panels: Main on all cars. Auxiliary panel on cars with front and rear openings.
+18. Direction Indicators: Hall Lanterns at all floors.
+19. Hall Stations: Single riser; In Case of Fire and Fire Instruction signs engraved on faceplates.
+20. Fire and Engineer’s Control Panels: Required; one panel at each location displaying all functions and incorporating all switches for elevators and escalators.
+21. Monitoring System: As specified.
+22. Output Timers: Cab Fan and Light.
+23. Emergency Car Light: Powers normal car lighting.
+24. Pads and Hooks: Provide four sets.
+25. Communication Systems: Hands-free, two-way with video capability (2019 compliant) for emergency personnel/first responders.
+
+2.6 OWNER DRIVEN ALTERNATES:
+A. Change stainless steel reference to 316L stainless steel.
+B. Add Special project warranty.
+C. Weather proofing: Added NEMA 4 or validated equal to watertight enclosures.
+D. Maintenance Service: Pricing for 3 years continuing maintenance; break out pricing.
+E. 1.2.C.28: Revised: Flooring on all cars shall be ¾ inch thick epoxy terrazzo tile.
+F. 2.4.A.18 & 2.10.A.9: Revised: 2-inch recess for flooring. Min sill recess for epoxy terrazzo (by flooring contractor) over sub-floor. Equipment/cabs to accept full flooring/tile setting/sub-floor/finishes weight. Subfloor: two layers ¾ inch marine grade plywood, continuously glued, anchored with countersunk bolts through plywood and steel plate cab shell.
+G. 2.8.K. Revised Gauge: All hoistway doors, frames, car doors, car fronts and shells shall be min 14 gauge.
+H. 2.9.D Added: Platform to be min 1/4-inch-thick reinforced steel plate.
+I. 2.9.A.5 Added: Sills shall be grouted solid to the platform.
+J. 2.9.A.13 Revised: Handrail: End caps welded flush, ground smooth. Bottom rail: 4-inch bar type handrails/bumper rails at 8 inches above finished floor on all three walls. Bar thickness 3/8-inch.
+
+2.7 CONTROL ROOM EQUIPMENT
+A. Equipment must fit space conditions; redesign/revision costs due to Subcontractor/Manufacturer selection or equipment changes are Subcontractor's responsibility.
+B. VVVF Motor Drive:
+1. Drive shall vary motor torque during acceleration/deceleration.
+2. Capable of on-site programming volts per Hertz acceleration/deceleration ride profiles to adjust ride quality.
+3. Flux vector drive shall control AC induction motors using high resolution, dual channel optical reader.
+4. Flux vector drive shall deliver 100-percent rated motor torque from base speed down to zero speed.
+5. Flux vector drive shall not use DC injection for slowdown braking.
+6. Flux vector drive adjustable to achieve required current motor voltage/frequency to match hoist motor characteristics.
+7. Drive shall not create excessive audible noise in elevator motor.
+8. Drive shall deliver enough current to accelerate elevator to contract speed at rated load. Speed regulation within 3-percent during all phases of acceleration, deceleration and leveling.
+C. Isolation Transformer: Provide transformers, reactors, capacitors, and devices to limit overall Distortion Factor at connection point of elevator converter feeders to electrical distribution system to max 3-percent.
+D. Isolation Mounts: Provide approved vibration isolation to prevent machine vibration transmission to building structure. 40 durometer double deflection neoprene mounts sized for static deflection under load of min 3/16-inch for motor/gear box. Acceptable: Mason Industries Type BR or equivalent.
+E. Isolation shall be provided for:
+1. Harmonic distortion
+2. Power factor
+3. Flicker
+4. Line notching
+F. Controller: Enclosed panels with ventilated cabinets, hinged/removable doors. Permanently marked symbols/letters identical to wiring diagrams adjacent to each component.
+1. High voltage (>= 110-volt) contact points inside cabinet protected from accidental contact when doors open.
+2. Controller separated into Motor Drive side and Control side. High voltage motor power conductors physically segregated.
+3. Field conductor terminations segregated: high voltage (>30V DC, >100V AC) and low voltage (<30V DC).
+4. Controllers designed, tested, certified for EMI immunity compliant with EN12015.
+G. Components: Microprocessor-based group dispatcher and communications network requirements:
+1. Dispatch computer: Future dispatching modifications via software only, minimum downtime.
+2. Latching circuitry (outputs) fail-safe design, turns off all outputs on processor malfunction.
+3. Power Supplies: UL recognized, short circuit protection.
+4. Frame: Assemblies, power supplies, chassis, switches, relays securely mounted on substantial, self-supporting steel frame. Equipment enclosed with covers; no equipment on covers.
+5. Wiring: UL labeled copper wires. Neatly routed interconnections. Solder or solder-less lugs for connections to studs/terminals.
+6. Marking: Components clearly/permanently identified adjacent to each device, identical to wiring diagram.
+7. Extender boards provided for computing devices in computer chassis for access to printed circuit cards.
+8. Electronic time delay devices use stable capacitor or crystals as time base.
+H. Printed Circuits and Related Hardware:
+1. Solid-state hardware/devices: built-in noise suppression compliant with EN12015.
+2. Inputs from external devices (e.g., pushbuttons) and outputs to external devices (e.g., indicators, relays) shall be isolated.
+3. Relays as input/output devices not acceptable.
+4. Separate regulated power supply for each computer chassis.
+5. Control circuits designed with one side of power supply grounded for testing.
+6. Safety circuits unaffected by accidental grounding.
+7. System starts properly after power failure/interruption.
+8. System memory prevents data loss during power failure/disturbance.
+9. Conduits/wiring not exposed in lobby or occupied building parts.
+I. Speed Regulation:
+1. Acceleration/deceleration rate constant as possible, independent of car operating devices.
+2. Computer-controlled acceleration/deceleration/velocity. Car velocity/position fed to computer, compared to profile, adjusted for fast/smooth curve. Max acceleration/deceleration: not less than 2'-6" per second², uniform change.
+J. Diagnostic Tools: Subcontractor provides on-board diagnostic tools/documentation for adjustment, troubleshooting, reprogramming:
+1. Passwords/identification codes for software access.
+2. Composite listing of variable software parameter settings.
+3. Dictionary of fault codes with recommended resolution steps (highest to lowest probable cause).
+K. Seismic Protective Features: Per code requirements:
+1. All code requirements.
+2. Dual axis seismic switch with horizontal/vertical motion sensors.
+3. Conduit supports.
+
+2.8 OPERATING SYSTEMS
+A. Closed-loop solid-state microprocessor system for car/group operational control.
+B. Duplex Selective Collective (2 car groups):
+1. One car parks at main floor (home car), other (free car) parks at last served landing with doors closed.
+2. Free car answers hall calls above/below its landing, except main floor calls.
+3. When free car clearing calls, home car responds to:
+a. Call registered on home car buttons.
+b. Up-hall call below free car while free car travels up.
+c. Up/down call above free car while it travels down.
+d. Free car inability to clear all hall calls within approx. 40 seconds.
+e. Car call button registration starts car. Car responds to its own car calls and corridor calls, in direction of travel, in order of landings reached.
+4. Only one car stops per hall call. First car to complete calls returns to main floor.
+5. Car remains at arrival floor for adjustable interval for passenger transfer. Doors close after predetermined interval (unless parked at main floor), unless interrupted by car door reversal device or door open button.
+7. Programmed Door Control: Separate adjustable times for min passenger transfer time for car stops, intermediate floor hall call stops, lobby floor stops. Timing computerized to coincide with traffic demands.
+8. System features:
+a. Dispatch Protection: Automatic dispatching on primary system failure. Visible/audible alarm for dispatching computer loss.
+b. Delayed Car Protection: Automatic disassociation of delayed car from Group System. Car restored when delay cause eliminated.
+c. Designated Parking: Car parks as designated by Controller or at last call.
+d. Next Car: Car selected as next up at lobby parks with door open. If no calls, door closes automatically by Group Controller.
+9. Ascending Car Over-speed and Unintended Car Movement Protection: Prevents elevator striking hoistway overhead or unintended car movement per code.
+
+C. Simplex Selective Collective (Single Elevators):
+1. Microprocessor-based system.
+2. Momentary pressure of car/hall button (other than parked landing) starts car, dispatches to registered floor. If call registered at idle car's floor, doors open automatically.
+3. Once direction established, car answers all calls in that direction; does not reverse until all calls in that direction answered.
+4. Calls for opposite direction remain registered, answered after current direction calls completed.
+5. Car remains at arrival floor for adjustable interval for passenger transfer. Doors close after predetermined interval, unless interrupted by car door reversal device or door open button.
+6. Hall call registration lamps extinguish when doors begin to open on responding elevator.
+7. Car call buttons do not illuminate if elevator already at registered floor.
+9. Programmed Door Control: Separate adjustable times for min passenger transfer time for car stops, intermediate floor hall call stops, lobby floor stops. Timing computerized to coincide with traffic demands.
+10. Dispatch computer: Future dispatching modifications via software only, minimum downtime.
+
+D. Security Operation:
+1. Card Readers and Cameras installed by elevator Subcontractor.
+2. Coordinate with security subcontractor for wiring/space. Interface components/software for central tracking of registered calls.
+3. Min 4-inch x 4-inch space in car operating panels and each hall station for Architect-designated proximity reader.
+4. Card activation activates designated floor car call. Button pressure illuminates/registers call. Elevator proceeds to designated floor.
+5. Junction box/demarcation cabinet in control rooms for separation between Security Subcontractor and Elevator Subcontractor.
+6. Fire Service and Earthquake Operation override Security operations.
+E. Independent Service: Controls remove elevators from normal operation, control from car buttons only. Car rises at contract speed, no corridor call response. Seismic indication in car per ANSI A17.1 – 2004, Rule 8.4.10.1.1.
+F. Car Top Operation: Per Code requirements.
+G. Emergency Recall Operation (Fire Service): Per Code. Subcontractor provides relays, wiring, terminal strips for fire alarm signals.
+H. Ascending Car Overspeed and Unintended Car Movement Protection: Prevents elevator striking hoistway overhead or unintended car movement per Code.
+I. Seismic Operation: Per Code.
+J. Load Weighing: Automatic device set at approx. 80% full load. When activated, bypasses corridor calls, initiates car dispatch at main terminal prior to normal interval. Adjustable setting 50-80% full load. Provides occupancy status for Fire Control Panel.
+K. False Call Canceling: Cancels all car calls when car loading not equal to registered calls.
+L. Fan and Light Output Timer: Adjustable timer (1-10 min) turns off fan/light when car inactive.
+M. Door Hold Operation: Controls/button in main car panel hold doors open 30-90 seconds. Resumes normal operation on:
+1. Door close button activation.
+2. Any floor button activation.
+3. Time expiration.
+N. Standby / Emergency Power and Operation:
+1. Passenger Elevators: On standby/emergency power detection, return to main lobby one at a time, doors open. After all cars returned, one or more cars selected to run (automatically, overrideable via Fire Control Panel).
+2. Service Elevators: Software for operation on standby/emergency power.
+3. Number of cars allowed on emergency power preprogrammed.
+
+2.9 HOISTWAY EQUIPMENT
+A. Guide Rails: Planed steel, standard T-sections; formed rails unacceptable. Extend from pit floor to underside of machine bedplate/cassette.
+1. Car/counterweight rail brackets: sized/designed for min/compliant deflection, prevent spreading/distortion.
+a. Individual brackets: sufficient length to span between guide rail assembly and building structure. Provide bracing/weld plates. No additional compensation for undersized brackets.
+b. Concrete embeds for bracket attachment: furnished under this section, installed by others. Job specific installation detail required.
+2. Guide rail loads shown on drawings: include safety application, running, loading, seismic loads.
+B. Buffers: Struts and lateral bracing as required. Mount on continuous channels secured to guide rails.
+C. Machine Assembly: Steel beams, channels, bearing plates support overhead sheaves/rope hitches. Clip angles, tie rods to attach machine bedplate/cassette to structure. No additional compensation for undersized machine interface. Sound isolation to prevent vibration. Machine location: accessible from car tops, code mandated.
+D. Machine: AC Gearless traction type with synchronous permanent-magnet motor. Dual solenoid service/emergency disc brakes. Mount in machinery space overhead of hoistway.
+E. Encoder: Solid-state, optical, digital-count type, mechanically coupled to car, machine or car governor.
+F. Overhead Sheaves: Cast iron, machined/grooved for suspension means diameter, supported by steel beams/channels. Guards withstand shock, prevent suspension means leaving grooves. All bearings shielded/sealed.
+G. Compensation: As required for speed/duty. Encapsulated chain type, pit mounted sway dampening devices. Position/secure chains to eliminate interference. If compensation provided, pit mounted sway dampening devices with sound isolation to limit roller noise.
+H. Counterweight: Structural steel channel frame with metal filler weights. Metal guards per Code if compensation chain not provided.
+I. Counterweight Guides: Manufacturer’s standard guides as part of model package.
+1. Roller type guides: smooth/quiet ride, free of rumbles, bumps, vibrations, excessive sway. Three (3) or more spring-mounted rollers per assembly maintain rail contact, adjustable stops control post-wise float. Rollers: neoprene or similar sound deadening material with high "memory".
+2. Sliding guides: required for speed/duty, solid or swivel type with replaceable gibs, minimize lateral motion while maintaining rail contact.
+J. Counterweight Sheaves: Cast iron, machined/grooved for ropes diameter, adequately supported. Guards withstand shock, prevent suspension means leaving grooves. All bearings shielded/sealed.
+K. Suspension Means:
+1. Steel type hoist ropes or belts.
+a. Traction steel type hoist ropes: Quantity, size, type as required for duty; fasten with adjustable shackles.
+b. Polyurethane coated belts: high-tensile-grade, zinc-plated, stranded steel cables, size/quantity as required for duty. If belts used, installation incomplete without permanent, self-calibrating means to monitor/communicate belt condition as parameter in controller/system diagnosis.
+L. Governor Ropes: Size/type required for duty; adequately fastened/secured.
+M. Governor: Overhead centrifugal type, car driven, with electrical shutdown switches. Locate in overhead with tail weight in pit. Self-resetting tension-type. May be car mounted if approved by AHJ.
+N. Safety: Flexible guide clamp, Type B for car/counterweight where occupied space below hoistway.
+O. Pit Access Ladders: Code compliant in all pits.
+P. Wiring:
+1. Conductors: Copper insulated, flame retarding/moisture resisting outer cover. Install in galvanized metal wireways/raceways. Shaft riser to door interlocks: SF-2 type or equal, max 392°F. Terminations insulated. Flexible conduit for short connections. 10% spare conductors.
+2. Traveling Cables: UL-labeled fire/moisture resistant outer braid, steel supporting strand as required for rise. Min eight (8) pairs shielded communication wires for security/car lighting. Two (2) coax cables for CCTV camera to 4-square box on car top. Position/secure cables to prevent rubbing/chafing.
+3. Remote Wiring: Between control room, hoistway, and remote Security/Fire Control Panel.
+4. Work Lights and Duplex Receptacles: On top/bottom of car with lamp guards. Switch in service cabinet controls under car lighting.
+5. Stop Switches: Code required in pit and machinery space of MRL elevators.
+Q. Seismic Protective Features: Per Code:
+1. Dual counterweight displacement (ring and string) devices.
+2. Retainer plates.
+3. Snag guards.
+
+2.10 ENTRANCE EQUIPMENT
+A. General: Entrance assembly with 1 1/2-hour rating. Fabricated by equipment manufacturer or approved vendor.
+B. Refer to architectural drawings for finishes.
+C. Entrance Frames:
+1. Passenger Elevators: 14-gauge 316L Satin Stainless Steel, welded/mitered, one-piece unit.
+2. Service Elevators: 14-gauge 316L Satin Stainless Steel, bolted construction, one-piece unit.
+D. Entrance Signage:
+1. Floor Designation / Braille Plates: Cast, flush mounted from back of frames. Centerline 5'-0" AFF. White character on black background, braille per local Accessibility Guidelines. Main egress level: 2-inch diameter star left of character.
+2. Medical Emergency Identification: Cast, flush mounted plaques, 3-inch high "Star of Life" on each side jamb of Service Elevators only. Mounting matches floor designation braille plates. Locate "Star of Life" at 7'-0" AFF.
+3. Elevator Car Identification: Cast plates on each car at main egress level. Locate 6'-0" AFF on one side, centered horizontally. Finish/mounting match floor designation braille plates.
+E. Hoistway Sills:
+1. Extended so door panels remain in sill when fully open.
+2. Milled stainless-steel sills at all openings with non-slip surface.
+3. Milled reveals with #4 Satin, short grain brushed finish (match Architect’s sample). Reveal size, shape, spacing match between hoistway sill, cab sill, cab sill extension.
+F. Sill Supports:
+1. Passenger Elevators: Manufacturer’s standard integrated sill support angles for proper loading.
+2. Service Elevators: For Class C loading: 5 inch x 5 inch x ½ inch thick angles max 12 inch on center OR manufacturer’s standard integrated sill support angles with gusset reinforcement.
+G. Struts: Min 3-inch continuous hot rolled/formed steel angle, securely fastened to sill/floor beam above. Strut extensions for floor-to-floor heights > 12'-0". No additional intermediate horizontal support provided; if required, coordinated by Subcontractor.
+H. Headers: Min 3/16-inch formed steel, designed to support hangers. Bolted to supporting struts.
+I. Dust Covers: Removable, full length manufacturer’s standard gauge steel. Sections for convenient hanger access.
+J. Fascia: Manufacturer’s standard gauge steel plates from top of header to sill of door above or beam above. Continuous blind fascia if front hoistway walls not built out where openings don't exist. Alternatively, car door interlock prevents doors opening unless car in unlocking zone.
+K. Hoistway Doors: Hollow metal flush door construction. Reinforcement by formed vertical sections full height. Two (2) removable, non-metallic gibs with fire tabs (leading/trailing edge). Center opening doors: full length rubber astragal at leading edge. Finishes extend completely around door panels, overlap min 1-inch on hoistway side. No visible exposed fasteners.
+1. Passenger Elevators: Min 14 gauge 316L Satin Stainless Steel at all openings.
+2. Service Elevators: Min 14 gauge 316L Textured Stainless Steel at all openings.
+L. Floor Numbers: On hoistway side of doors, at intervals for stalled elevator occupant to determine floor. Min 4-inches high.
+M. Sight Guards: For each landing door panel, Manufacturer’s standard gauge furniture steel. Finish matches doors.
+N. Hangers: Two-point suspension sheave type, vertical/lateral adjustments. Sheaves min 2 1/4-inches diameter with sealed ball/roller bearings.
+O. Tracks: Cold drawn steel, shaped/finished for free sheave movement. Bottom of track in contact with up thrust roller.
+P. Closers: Sash, spring or spirator type.
+Q. Interlocks: Electrical contacts prevent elevator operation by normal devices unless hoistway doors closed or within Code tolerances.
+
+2.11 CAR EQUIPMENT
+A. Loading Classification and Requirements:
+1. All elevators designed for Class C-3 loading per Code design data/formulas (car frame, platform, guides included).
+B. Car Frame: Welded/bolted steel channel construction; material thickness manufacturer’s standard for duty.
+C. Car Sheaves: Same as counterweight sheaves.
+D. Platform: Isolated type, steel frame with steel subfloor, fireproof underside. Cab shell platform min ¼ inch thick reinforced steel plate. Under-car work lighting, switch under car and in service cabinet.
+E. Car Guides: Standard model package. Roller type guides: smooth/quiet ride, free of rumbles, bumps, vibrations, excessive sway. Three (3) or more spring-mounted rollers per assembly maintain rail contact, adjustable stops control post-wise float. Rollers: neoprene or similar sound deadening material with high "memory".
+F. Toe Guards: Per Code.
+G. Hangers: Two-point suspension sheave type, vertical/lateral adjustments. Sheaves min 2 1/4-inches diameter with sealed ball/roller bearings.
+H. Tracks: Cold drawn steel, shaped/finished for free sheave movement. Bottom of track in contact with up thrust roller.
+I. Door Protection:
+1. Infrared detector: Infrared door edge projects curtain of light. Reopens doors if one beam penetrated. Transmitters/Receivers spaced for max protection within doorway height. Systems allowing individual zone turn off/on not allowed.
+2. Differential door timing: Adjustable timers vary door open time. 1 sec for car call, 5-8 sec for hall call. Reduced to 1/2-sec if proximity detector interrupted. Doors remain open if passengers crossing threshold.
+3. Nudging: If doors prevented from closing for 20-sec (proximity device failure/obstruction), doors close at reduced speed with buzzer.
+J. Door Operators: Heavy-duty master electric power operators for automatic car/hoistway door opening/closing. Velocity/distance feedback speed control. Smooth/quiet operation without slam/shock.
+1. Opening speed min 3.0 FPS, reversal in max 2 1/2-inches.
+2. Auxiliary-closing device automatically closes hoistway doors if car leaves landing zone.
+3. Manual car/hoistway door operation from inside cab possible during power interruption if car in landing zone.
+K. Car Door Contacts: Electrical contacts prevent elevator operation by normal devices unless car doors closed or within Code tolerances.
+L. Door Restrictors: Prohibit car doors opening > 4-inches outside unlocking zone.
+M. Car Sills: Dimensioned sill blocking for finished flooring.
+1. Extended so door panels remain in sill when fully open.
+2. Sill extensions to face of front return.
+3. Milled stainless-steel sills, matching sill extensions to align with front returns.
+4. Milled reveals with #4 Satin, short grain brushed finish (match Architect’s sample). Reveal size, shape, spacing match between hoistway sill, cab sill, cab sill extension.
+5. Grouted solid to car platform.
+
+2.12 CAR ENCLOSURE:
+A. Fabricated by equipment manufacturer or approved vendor. Features:
+1. Reinforced/ventilated per Code. Sound-deadening mastic to exterior.
+2. Designed to accommodate architectural finishes.
+3. Cab interiors custom per architectural drawings.
+4. Shell:
+a. Passenger Elevators: Min 14-gauge sheet steel, powder coated/baked enamel interior. Shell width/depth accept removable panels per Architect. Light-proof joints, gasket/secure to prevent noise from movement/contortion.
+b. Service Elevators: Min 14-gauge sheet steel, powder coated/baked enamel interior. Light-proof joints, gasket/secure to prevent noise. Vent slots in top/bottom per Code.
+5. Canopy:
+a. Passenger Elevators: 10'-0" nominal clear height. Reinforced, Code-compliant. Gasket to prevent noise. Underside baked enamel (match Architect's custom color). Hinged top emergency exit with lock per Code.
+b. Service Elevators: 10'-0" nominal clear height. Reinforced, Code-compliant. Gasket to prevent noise. Underside finished in 316L Satin Stainless Steel.
+6. Interior Panels:
+a. Mounting prevents rattling/vibration. Installation allows authorized removal with specialized tool for repair/replacement without hoistway/exterior access.
+c. Service Elevators: Removable stand-off panels, Class A fire-rated. Faced/edged in t
+                ```
+
+                CRITICAL OUTPUT INSTRUCTIONS:
+                - Return ONLY a valid JSON array starting with [ and ending with ]
+                - NO markdown code blocks, NO explanations, NO extra text
+                - If you approach token limits, complete the current product and close the array with ]
+                - Example format: [{"product_name":"...", "technical_specifications":[...], "manufacturers":{...}, "reference":"..."}]
+                
+                Your response must start immediately with [ and end with ] and contain nothing else but the JSON array:

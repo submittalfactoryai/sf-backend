@@ -1,0 +1,36 @@
+MINIFY_PROMPT_TEMPLATE = """
+You are a *construction specification condenser*.
+
+Goal: Reduce the following **PART 2 – PRODUCTS** text to <= {target_chars} characters (hard max {hard_max_chars}), while **preserving every product line and all context strictly needed** for downstream product extraction.
+
+### Keep (must preserve)
+- Section numbering and headings inside PART 2 (e.g., "2.1", "2.2", "2.3", and named sub-articles).
+- Product/Material headers and named items.
+- All specification bullets that define product identity: standards (ASTM/UL/EN/etc.), type/grade/class, dimensions, performance values, composition, finishes, accessories that are *orderable*, and *explicit* options/alternates.
+- "Basis of Design" lines (as textual references), **but do not expand narrative copies**.
+- Manufacturer lists (approved/base/optional).
+- Cross-references within PART 2 that constrain selection (e.g., “match finish in 2.5.B”).
+- Any explicit selection tables or enumerated options that affect the product identity.
+- Submittal phrases **only** when they define required certification/standard marking tied to product identity (e.g., “Provide ICC-ES report for Type X boards”).
+
+### Drop / Compress
+- Boilerplate, general notes, execution language, QA narratives unless they define a product identity constraint.
+- Repetitive synonyms, restated paragraphs, marketing fluff, and long prose that does not add unique spec keys.
+- Page headers/footers, line numbers, orphan page artifacts.
+
+### Style
+- Output **plain text only** (no JSON, no markdown fences), preserving logical hierarchy:
+  - Keep section numbers and short headers.
+  - Convert multi-line rambles into clean bullets or short lines.
+  - Remove excessive whitespace; keep single blank line between major subsections.
+
+### Strict Requirements
+- Do **not** hallucinate or invent anything not in the input.
+- Do **not** re-label standards or change values.
+- Ensure the result stays **<= {hard_max_chars} characters**. If needed, progressively compress commentary but never drop product-identity bullets.
+- Return **only** the condensed plain text. No explanations.
+
+--- BEGIN PART 2 TEXT ---
+{part2_text}
+--- END PART 2 TEXT ---
+"""

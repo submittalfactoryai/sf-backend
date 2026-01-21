@@ -1,0 +1,429 @@
+A. Drawings and general provisions of Contract, including General and Supplementary Conditions
+B. Respondent must clearly identify all exceptions, clarifications, or other variations from contract
+and page, providing the proposed substitution, alternative or economic credit represented in
+to or referenced in their offer pricing.
+C. Error in or conflict among requirements not specifically identified in the response shall be
+D. The Vertical Transportation Drawings are part of this specification package and compliance
+E. The SDIA Design and Construction Standards as well as the SDIA Terminal 1 Replacement
+A. Work Included:  Provide materials, labor, and services necessary for the safe, orderly,
+B. Where a component, device, system, or part of the equipment is referred to in the singular, such
+C. Related Work:
+elevator controller panels.
+feeder wiring to controller panels for car lights.
+switch in elevator control room.
+9. 120-volt G.F.C.I. convenience outlets in control rooms, overheads, and pits.
+13. Finish painting except as noted.
+16. Appropriate analog telephone lines, jacks and wiring to elevator controller panels.
+18. For elevators exposed to the exterior, the area in front of the elevator entrances shall be
+mounted in the elevator cars. Cables shall be routed from the homerun location to the
+A. Applicable Codes (Latest Edition):
+6. American Disabilities Act - ADAAG published in 28 CFR Part 36 Federal Register.
+7. National Electrical Code - NFPA 70.
+8. National Fire Protection Association - NFPA 72.
+9. Fire Test of Door Assemblies NFPA 252
+10. American Welding Society (AWS) D1.1 - Structural Welding Code – Steel.
+(ANSI A117.1).
+A. The following definitions apply to work of this Section:
+12. <Concealed=: embedded in masonry or other construction, installed in furred spaces,
+within double partitions or hung ceilings, underground, in crawl spaces or enclosures, or
+otherwise out of view in normal observation.
+15. <Similar= or <equal=: of base bid manufacturer, equal in materials, weight, size, design,
+and efficiency of specified product, conforming to <Acceptable manufacturers.=
+A. The controller system shall provide smooth acceleration and deceleration with 1/8-inch leveling
+accuracy at all landings, from no load to full rated load in the elevator, under normal or
+B. The floor-to-floor performance time under the above criteria shall be 12.6 seconds (floor-to-
+floor time is measured from the start of door close at one floor to 3/4 open at the next floor).
+C. The door open time shall be 2.5 seconds  (time measured from start of door open to fully open).
+D. The door close time shall be based on the Code requirements with a door delay feature. The
+door delay is the minimum acceptable time from notification that a car is answering a call
+(lantern and audible signal) until the doors of the car start to close. Time shall be calculated by
+2. T = Total time in seconds.
+3. D = Distance from a point in the lobby 5 feet-0 inches directly in front of the hall call
+station to the centerline of the door opening.
+E. Car Call: The minimum acceptable time for doors to remain fully open shall not be less than 3-
+F. The speed of the elevator shall not vary plus or minus 5-percent under loading conditions.
+G. Ride Quality requirements shall include a horizontal acceleration measured inside of the cab
+H. Vertical acceleration and deceleration shall free of bumps, jerk, and sway and shall be not
+I. Prior to final acceptance and prior to the termination of the warranty maintenance period, the
+J. Design equipment as indicated on Contract Documents including spectral response acceleration
+K. Limit overall elevator noise emissions to the building to the following maximum A-weighted
+sound pressure levels in any mode of operation:
+1. 60-decibels measured 3 feet-0 inches from any piece of equipment in the machine room.
+3. 45-decibels measured in the elevator lobby 10 feet-0 inches from the elevator doors.
+A. Shop Drawings and Samples:
+1. Provide quantities per Submittal Section and as indicated herein.  In the event of conflict,
+2. Provide Subcontractor’s (including manufacturers and installer’s) current certifications
+applicable codes and have been approved for installation and accepted as complete on at
+panels or 12-inch lengths as applicable.
+B. Equipment Brochures and Service Manuals:
+in organized fashion, and provide a complete digital set on CD or other portable media,
+a. Equipment and components, descriptive literature.
+b. Performance data, model number.
+c. Installation instructions.
+d. Operating instructions.
+e. Maintenance and repair instructions.
+f. Spare parts lists.
+g. Lubrication instructions.
+h. Record layout drawings.
+i. Wiring diagrams.
+C. Closeout Submittals:
+line wiring diagrams showing all electrical circuits in the hoistway as well as the machine
+area and controller room. These diagrams shall be bound in an 8 1/2-inch by 11-inch
+binder and located in the elevator machine room as directed.
+service cabinet, and others if provided. Locate an additional set of keys in the elevator pit.
+with a closeout submittal as required in Key Schedule specification section.
+contract and per unit type.
+equipment is manufactured in accordance with the specifications.
+A. The elevators and associated equipment shall be free of defective material, imperfect work, and
+A. The elevator contractor shall provide a customer service tool (provide for each type of vertical
+B. It is recognized that each manufacturer’s system contains components that are proprietary to the
+C. Diagnostic, adjusting and monitoring tools for all components including documents, manuals,
+wiring diagrams and spare parts as listed in this specification shall be provided in each machine
+D. Manufacturer shall guarantee to support the equipment for this project regarding notification to
+E. Provide contact information for the Original Equipment Manufacturer’s parts supplier or
+F. Provide a list of parts of each component manufactured and stored at the warehouse and the
+G. Provide contact information for technical support so that the Purchaser or designated service
+Contractor can obtain technical support on a 24-hour basis to aid in troubleshooting problems.
+H. Stock on site parts which have long lead times; a list which shall be provided by the elevator
+3. One set of boards for each model being provided under this contract.
+A. General:  The General Contractor will require the use of elevators during construction, he shall
+called for in Section 1.9 shall not commence until the entire project has been accepted.
+B. Maintenance:  Elevators shall be maintained on a regular basis during the temporary
+C. Damage:  The Owner is entitled to receive new elevator equipment upon final acceptance of the
+be repaired or replaced to ensure the equipment is in new condition.  Final acceptance and
+D. Schedule:  Sufficient time must be allowed to prepare and adjust temporary elevators so that the
+A. Provide twelve (12) month warranty maintenance service beginning at the start of the warranty
+approved by elevator manufacturer and with a minimum five (5) years minimum experience.
+B. Provide pricing for three (3) years of continuing maintenance upon the completion of the
+included in the base installation bid.  Warranty maintenance shall commence upon completion
+C. All maintenance shall be performed per the SDIA maintenance contract requirements.
+A. Power: 480-volts, 3-phase, 60-hertz. Subcontractor to verify.
+B. Lighting: 120-volts, 1-phase, 60-hertz.
+A. All permits, and certificates as required shall be provided.
+2.1 MANUFACTURERS
+A. Product of individuals, firms or corporations regularly engaged in manufacturing elevators
+comparable with this contract and in satisfactory operation for a period of not less than five (5)
+B. Qualified Bidders / Models (in alphabetical order)
+C. The listing of the models is for general reference.  Companies are required to meet all
+D. Substitute model products shall not be offered as a base bid unless agreed upon beforehand in
+design team reserves the right to reject the offer in its entirety.
+2.2 MATERIALS
+A. Aluminum: Extrusions as per ASTM B221.
+B. Plywood Backing: PS-1-83, A-D Interior Grade Douglas fir. Fire treat per AWPA with a
+C. Sheet Steel (Painted): ASTM A1008; cold-rolled, stretcher-leveled, furniture grade; free from
+D. 316L Satin Stainless Steel: As per ASTM A167, Type 316L series, with finish as specified.
+E. 316L Textured Stainless Steel - at service elevator: As per ASTM A167, Type 316, Rigidized or
+approved equal textured stainless-steel pattern 5WL®, with satin finish as specified.
+2.3
+2.4 PASSENGER ELEVATOR LIST
+A. Also, Refer to, Vertical Transportation Drawings.
+2.5 OUTLINE OF EQUIPMENT
+A. Passenger Elevators
+1. Contract Load, in Pounds
+2. Contract Speed, in FPM
+3. Class of Loading
+Overhead in hoistway
+5. Machine Type
+6. Type of Control
+9. Car and Hoistway Door Operation
+10. Door Protection
+12. Hoistway Doors
+Minimum 14-gauge 316L Satin Stainless Steel at
+Minimum 14-gauge 316L Satin Stainless-Steel
+Extend full width so that doors remain in sill
+when in fully open position.  Milled stainless-
+steel sills at all openings with a non-slip surface.
+Doors and fronts shall be 316L Satin Stainless
+Steel; minimum 14 gauge.  Provide a baked
+Provide milled stainless-steel sills and matching
+front returns.  Extend full width so that doors
+remain in sill when in fully open position.
+grade plywood
+18. Car Operating Panels
+Auxiliary panels shall be provided only on
+Single Riser per Group; In Case of Fire and Fire
+21. Fire and Engineer’s Control Panels
+with activation switches in the service cabinet.
+exterior elements.  Provide galvanized metal in
+the hoistway or paint all non-running surfaces
+with 3 coats of rust inhibiting paint.  Protect door
+operator with galvanized sheet steel cover.  All
+switches in the hoistway shall be in NEMA 4 or
+surfaces of hoistway and car doors shall be 316L
+Satin Stainless Steel or painted with 3 coats of
+rust inhibiting paint.
+B. Service Elevators
+2. Contract Load, in Pounds
+3. Contract Speed, in FPM
+4. Class of Loading
+Overhead in hoistway
+6. Machine Type
+7. Type of Control
+10. Car and Hoistway Door Operation
+11. Door Protection
+Extend full width so that doors remain in sill
+when in fully open position Provide milled
+stainless-steel sills at all openings with a non-
+Doors shall be a minimum 14-gauge 316L
+Textured Stainless Steel; Frames shall be a
+stainless-steel finish
+Stainless Steel.  Fronts shall be a minimum 14-
+gauge 316L Satin Stainless Steel.  Handrail and
+milled 316L stainless-steel sills and matching sill
+doors remain in sill when in fully open position
+Satin Stainless Steel checker plate installed over
+grade plywood.
+17. Car Operating Panels
+Main on all cars.  Auxiliary panel shall be
+Single riser:  In Case of Fire and Fire Instruction
+20. Fire and Engineer’s Control Panels
+Required; One panel at each location which will
+2.6 OWNER DRIVEN ALTERNATES:
+A. Change reference to stainless steel to reflect 316L stainless steel.
+B. Add Special project warranty
+C. Weather proofing:  Added NEMA 4 or validated equal to "watertight enclosures.
+D. Maintenance Service:  Pricing for 3 years continuing maintenance; break out pricing
+1.2.C.28:  Revised to Read: The flooring on all cars shall be ¾= thick epoxy terrazzo tile
+2.4.A.18 & 2.10.A.9:  Revised to Read:  Provide 2-inch recess for flooring.  Minimum sill
+subfloor shall consist of 2 layers of marine grade plywood. Provide two layers of ¾ inch marine
+grade plywood which shall be continuously glued together and anchored with bolts countersunk
+through the plywood and steel plate cab shell for the subfloor. Configure equipment and cab to
+accept the thickness and weight  of the flooring, tile setting, sub-floor, and all finishes.
+2.8.K.  Revised Gauge: All hoistway doors, frames, car doors, car fronts and shells shall be a
+2.9.D Added:  Platform to be a minimum 1/4-inch-thick reinforced steel plate.
+2.9.A.5 Added:   Sills shall be grouted solid to the platform.
+2.9.A.13 Revised to Read:  Handrail:  End caps are to be welded flush and ground smooth.
+Bottom rail:  4-inch bar type handrails / bumper rails located at 8 inches above finished floor on
+2.7 CONTROL ROOM EQUIPMENT
+A. Provide equipment to fit space conditions shown; all costs for re-design of, and revisions to,
+B. VVVF Motor Drive: Provide VVVF motor drive as follows:
+7. The drive shall not create excessive audible noise in the elevator motor.
+C. Isolation Transformer: Provide necessary isolation transformers, reactors, capacitors, and other
+D. Isolation Mounts:  Provide vibration isolation, of an approved type, which shall effectively
+inch for mounting the motor and gear box. Acceptable mounts are Mason Industries Type BR or
+E. Isolation shall be provided for the following:
+F. Controller: Provide enclosed controller panels with ventilated cabinets and hinged or removable
+doors. Provide permanently marked symbols or letters identical to those on wiring diagrams
+protected from accidental contact when the doors are open.
+(EMI) immunity in compliance with EN12015.
+G. Components: The microprocessor-based group dispatcher and communications network shall be
+1. Provisions shall be made in the dispatch computer so that the elevator system dispatching
+2. The latching circuitry (outputs) shall be fail-safe design that turns off all the outputs in
+3. Power Supplies: All power supplies utilized shall be UL recognized. They shall all have
+securely mounted on a substantial, self-supporting steel frame. The equipment shall be
+5. Wiring: All factory wiring shall utilize UL labeled copper wires. All wiring
+7. Provide extender boards when computing devices are used inside a computer chassis to
+H. Printed Circuits and Related Hardware:
+1. All solid-state hardware and devices shall have built-in noise suppression devices that
+3. The use of relays as input/output devices is not acceptable.
+7. In the event of a power failure or interruption, the system shall be designed so that it will
+8. System memory shall be provided so that data shall not be lost in the event of a power
+9. Conduits or other wiring shall not be exposed in the lobby or other occupied parts of the
+I. Speed Regulation:
+shall be independent of the operating devices in the car.
+J. Diagnostic Tools: Elevator Subcontractor shall provide all on-board diagnostic tools and
+stored in the software programs.
+3. A complete dictionary of fault codes with recommended steps for resolution, in sequence
+K. Seismic Protective Features: Provide the following:
+2.8 OPERATING SYSTEMS
+A. Provide a closed-loop solid-state microprocessor system to provide car and group operational
+B. Duplex Selective Collective: For 2 car groups
+1. With two cars in service, one car shall normally park at the main floor (<home car=).  The
+other car (<free car=) shall park at landing last served with doors closed.
+a. A call registered on the home car buttons.
+b. An up-hall call from the landing below the free car while the free car is traveling
+c. An up or down call registered from the landing above the free car while it is
+d. Inability of the free car to clear all hall calls within approximately 40 seconds.
+e. Registration of car call button shall cause the car to start. The car shall respond to
+its own car calls and corridor calls, in the direction of travel, and in order in which
+4. Only one car shall stop in response to anyone-hall call. The first car to complete all calls
+transfer. Doors shall close after a predetermined interval, unless the car is parked at the
+main floor, after opening unless closing is interrupted by car door reversal device or door
+open button in car
+transfer. Doors shall close after a predetermined interval, unless the car is parked at the
+main floor, after opening unless closing is interrupted by car door reversal device or door
+open button in car.
+7. Programmed Door Control: Separate adjustable times shall be provided for each car to
+a. Dispatch Protection: The system shall automatically provide dispatching in the
+b. Delayed Car Protection: The system shall automatically disassociate a car from the
+Group System in the event the car is delayed for a predetermined time. The car
+c. Designated Parking: The system shall provide for car to park as designated by the
+d. Next Car: The car selected, as next up at the lobby floor shall park with its door
+open. If an absence of calls exists, the door shall close automatically as
+C. Simplex Selective Collective For Single Elevators
+call was registered.  If a call is registered at the floor when the car is idle, the doors shall
+hall calls, in that direction, have been answered.
+be answered after car has completed its calls in the direction of travel.
+transfer.  Doors shall close after a predetermined interval after opening unless closing is
+interrupted by car door reversal device or door open button in car.
+6. Hall call registration lamps shall not extinguish until the doors begin to open on the
+transfer.  Doors shall close after a predetermined interval after opening unless closing is
+interrupted by car door reversal device or door open button in car.
+9. Programmed Door Control: Separate adjustable times shall be provided to establish
+10. Provisions shall be made in the dispatch computer so that the elevator system dispatching
+D. Security Operation:
+3. There shall be a minimum 4-inch by 4-inch space within the car operating panels  and on
+5. Provide junction box or demarcation cabinet in control rooms to create a clean line of
+E. Independent Service: Provide controls to remove elevators from normal operation and provide
+respond to corridor calls.  Provide seismic indication in car as required by ANSI A17.1 – 2004,
+F. Car Top Operation: Provide per Code requirements.
+G. Emergency Recall Operation (Fire Service): Provide operation and equipment per Code
+H. Ascending Car Overspeed and Unintended Car Movement Protection: Provide operation to
+I. Seismic Operation: Provide operation and equipment per Code.
+J. Load Weighing: Provide automatic load weighing device set at approximately 80-percent of full
+occupancy status for monitoring in Fire Control Panel.
+K. False Call Canceling: Provide device to cancel all car calls when car loading is not equal to the
+L. Fan and Light Output Timer: Provide an adjustable timer (range 1 to 10-minutes) that when
+M. Door Hold Operation:  Provide controls and a button within main car panel that shall hold the
+doors open for an adjustable period of 30 to 90-seconds. The following shall resume normal
+door operation:
+1. Activation of door close button.
+N. Standby / Emergency Power and Operation: Elevator Subcontractor shall provide operation as
+returned to the main lobby one (1) elevator at a time and remain there with the doors
+This automatic selection may be overridden through manual selection located in Fire
+Control Panel.
+2.9 HOISTWAY EQUIPMENT
+A. Guide Rails: Planed steel, standard T-sections; formed rails are unacceptable. Extend rails from
+a. Provide individual brackets of enough length to span between the guide rail
+b. If concrete embeds are to be utilized for bracket attachment, they shall be furnished
+B. Buffers: .  Provide struts and lateral bracing as required.  Mount on continuous channels secured
+C. Machine Assembly: Provide steel beams, channels and bearing plates to support overhead
+D. Machine: AC Gearless traction type machine with synchronous permanent-magnet motor.
+located in overhead of hoistway.
+E. Encoder: Provide solid-state, optical, digital-count type, mechanically coupled to car, machine
+F. Overhead Sheaves: Provide cast iron machined and grooved for diameter of suspension means
+and supported by steel beams or channels. Provide guards designed to withstand shock and
+G. Compensation: As required for speed and duty.  Provide encapsulated chain type and pit
+H. Counterweight: Structural steel channel frame with metal filler weights.  Provide metal guards
+I. Counterweight Guides: Provide manufacturers standard guides as part of model package.
+1. Roller type guides to provide smooth and quiet ride, substantially free of rumbles, bumps,
+2. Sliding guides required for speed and duty, either solid or swivel type with replaceable
+J. Counterweight Sheaves: Provide cast iron machined and grooved for diameter of ropes and
+K. Suspension Means:
+1. Either steel type hoist ropes or belts shall be provided.  They shall have the following
+a. Provide traction steel type hoist ropes.  Quantity, size, and type as required for
+b. Provide polyurethane coated belts with high-tensile-grade, zinc-plated, stranded
+steel cables, in adequate and appropriate size and quantity as required for duty.
+displayed in the primary means of controller or system diagnosis.
+L. Governor Ropes: Provide size and type required for duty; adequately fasten and secure.
+M. Governor: Overhead centrifugal type, car driven, with electrical shutdown switches. Locate the
+governor within the overhead as indicated with appropriate tail weight in pit.  Provide a self-
+resetting tension-type governor.  Where approved by the local authority having jurisdiction, the
+N. Safety: Flexible guide clamp, Type B for car and counterweight where there is occupied space
+O. Pit Access Ladders: Provide Code compliant pit ladder in all pits.
+P. Wiring:
+outer cover.  Install in galvanized metal wireways and raceways. Conductors from shaft
+riser to door interlocks shall be SF-2 type or equal, maximum operating temperature 392-
+2. Traveling Cables: UL-labeled fire and moisture resistant outer braid and steel supporting
+Security and Fire Control Panel.
+guards.  Provide switch in service cabinet to control under car lighting.
+5. Stop Switches: Provide Code required stop switches in the pit and in the machinery space
+Q. Seismic Protective Features: Provide per the Code requirements the following:
+2.10 ENTRANCE EQUIPMENT
+A. General: Provide entrance assembly with a 1 1/2-hour rating. The equipment manufacturer or a
+vendor approved by the manufacturer shall fabricate the entrance assemblies.
+B. Refer to architectural drawings for details on finishes.
+C. Entrance Frames:
+1. Passenger Elevators: Fabricate 14-gauge 316L Satin Stainless Steel welded and mitered
+2. Service Elevators: Fabricate entrance frames from 14-gauge, 316L Satin Stainless Steel
+D. Entrance Signage:
+background and include braille per local Accessibility Guidelines.  Grade or main egress
+E. Hoistway Sills:
+1. All sills shall be extended such that the door panels shall remain in the sill when the
+doors are in the fully open position.
+2. Provide milled stainless-steel sills at all openings with a non-slip surface.
+F. Sill Supports:
+1. Passenger Elevators:  Provide manufacturers standard integrated sill support angles
+2. Service Elevators:  Designed for Class C loading provide 5 inch by 5 inch by ½ inch
+G. Struts: Minimum 3-inch continuous hot rolled or formed steel angle with secure fastening to sill
+H. Headers: Minimum 3/16-inch formed steel designed to support hangers. Header shall be bolted
+I. Dust Covers: Removable, full length manufacturer’s standard gauge steel. Covers shall be made
+in sections for convenient access to hangers.
+J. Fascia: Manufacturer’s standard gauge steel plates extending from top of header to sill of door
+above or beam above if there is no door opening. Provide continuous blind fascia if front
+hoistway walls are not built out where openings do not exist. Alternatively, provide a car door
+interlock that prevents the doors from being opened unless the car is within the unlocking zone.
+K. Hoistway Doors:  Door panels shall be hollow metal flush door construction. Provide
+reinforcement by formed vertical sections running full height of door. Doors shall be provided
+of the door panel. Center opening doors shall be provided with full length rubber astragal at
+leading edge of each door.  Finishes to extend completely around door panels and overlap a
+fasteners.
+1. Passenger Elevators:  Minimum14 gauge 316L Satin Stainless Steel at all openings.
+2. Service Elevators: Minimum14 gauge 316L Textured Stainless Steel at all openings.
+L. Floor Numbers: Elevator hoistway doors shall have their floor number located on the hoistway
+side, placed at intervals such that a person in a stalled elevator, upon opening the car door, can
+determine the floor position.  Floor numbers shall be no less than 4-inches in height.
+M. Sight Guards: Provide for each landing door panel, constructed of Manufacturer’s standard
+gauge furniture steel. Finish shall match doors.
+N. Hangers: Provide two-point suspension sheave type with provisions for vertical and lateral
+adjustments. Sheaves shall be minimum 2 1/4-inches in diameter with sealed ball or roller
+O. Tracks: Cold drawn steel shaped and finished to permit free movement of sheaves. Bottom of
+track shall be in contact with up thrust roller.
+P. Closers: Sash, spring or spirator type.
+Q. Interlocks: Electrical contacts shall prevent the operation of the elevator by normal operating
+devices unless hoistway doors are closed or within tolerances allowed by Code.
+2.11 CAR EQUIPMENT
+A. Loading Classification and Requirements:
+1. All  elevators shall be designed for Class C-3 loading following the design data and
+formulas identified in the Code.  Including, but not limited to, the car frame, platform,
+B. Car Frame: Welded or bolted steel channel construction; material thickness to be manufacturers
+C. Car Sheaves: Same as counterweight sheaves.
+D. Platform: Isolated type, steel frame with steel subfloor, fireproof on underside. Cab shell
+platform shall be a minimum of ¼ inch thick reinforced steel plate. Provide under-car work
+lighting and connect to a switch under the car and in the service cabinet.
+E. Car Guides: Provide guides as part of standard model package.  Roller type guides shall provide
+F. Toe Guards: Per Code.
+G. Hangers: Provide two-point suspension sheave type with provisions for vertical and lateral
+adjustments. Sheaves shall be minimum 2 1/4-inches in diameter with sealed ball or roller
+H. Tracks: Cold drawn steel shaped and finished to permit free movement of sheaves. Bottom of
+track shall be in contact with up thrust roller.
+I. Door Protection:
+1. Infrared detector: Provide an infrared door edge that projects an infrared curtain of light
+guarding the door opening. Arrange to reopen doors if one (1) beam of the curtain is
+provide the maximum amount of protection within the height of the doorway. Systems
+2. Differential door timing feature: Provide adjustable timers to vary the time that the doors
+remain open in response to a car or hall call. The doors shall remain open for one second
+in response to a car call and five to eight-seconds for a hall call. This time shall be
+reduced to 1/2-second if the proximity detector is interrupted. The doors shall remain
+3. Nudging: When doors are prevented from closing for 20-seconds due to failure of the
+proximity device or obstruction, the doors shall close at reduced speed and a buzzer shall
+J. Door Operators: Provide heavy-duty master electric power door operators to automatically open
+and close the car and hoistway doors. The operator shall utilize velocity and distance feedback
+speed control. The doors shall be capable of smooth and quiet operation without slam or shock.
+1. Opening speed shall not be less than 3.0 FPS with reversal in no more than 2 1/2-inches.
+2. An auxiliary-closing device shall automatically close hoistway doors if car leaves the
+3. In case of power interruption, it shall be possible to manually operate car and hoistway
+doors from inside the cab, if the car is within the landing zone.
+K. Car Door Contacts: Electrical contacts shall prevent the operation of the elevator by normal
+operating devices unless car doors are closed or within tolerances allowed by Code.
+L. Door Restrictors: Provide door-restricting devices to prohibit the opening of car doors by more
+M. Car Sills: Provide properly dimensioned sill blocking to interface with finished flooring inside
+1. All sills shall be extended such that the door panels shall remain in the sill when the
+doors are in the fully open position.
+3. Provide milled stainless-steel sills and matching sill extensions to align edge of sill with
+2.12 CAR ENCLOSURE:
+A. The equipment manufacturer or a vendor approved by the manufacturer shall fabricate the car
+a. Passenger Elevators: Provide minimum 14-gauge sheet steel with powder coated or
+panels as detailed by Architect.  Ensure light-proof joints and gasket or secure to
+b. Service Elevators: Provide minimum 14-gauge sheet steel with powder coated or
+the cab.  Provide vent slots in top and bottom of the shell as required by Code.
+a. Passenger Elevators: Provide 10 feet-0 inch nominal clear height under canopy.
+b. Service Elevators: Provide 10 feet-0 inch nominal clear height under canopy.
+cab movement.  Underside of canopy to be finished in 316L Satin Stainless Steel.
+6. Interior Panels:
+a. Provide mounting method that prevents rattling or vibration.  Installation to
+replacement of new cab panels without requiring access to the hoistway or outside
+b. .
+c. Service Elevators:  Provide removable stand-off panels of Class A fire-rated
+construction. Panels to be faced and edged in textured 316L Textured Stainless
+Steel.
+d. Vent slots at bottom of shell shall be located so that they are concealed behind
+custom panels.
+a. Passenger Elevators: As detailed on architectural drawings.
+b. Service Elevators:  No drop ceiling required. LED light fixtures shall be flush with
+c. Service Elevators: LED light fixtures shall be flush with inside canopy surface,
+d. Lighting fixtures shall be designed to protect passengers from dislodged bulbs or
+broken glass while providing Code compliant illumination.  Arrange for hinged top
+e. For Passenger Elevators, if they are selected to be utilized for Construction Use,
+a. Cab shell platform shall be a minimum of ¼ inch thick reinforced steel plate.
+b. Provide two layers of ¾ inch marine grade plywood which shall be continu
