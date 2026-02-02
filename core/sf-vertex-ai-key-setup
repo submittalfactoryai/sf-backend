@@ -1,0 +1,19 @@
+Make a [ Keys ] folder under [core] : core > Keys
+
+then Under [Keys] folder make a sf-ai-keys.json file and copy or paste this file path in .env under this (GOOGLE_APPLICATION_CREDENTIALS)
+
+paste this credentials under sf-ai-keys.json
+
+{
+  "type": "service_account",
+  "project_id": "submittalfactoryai",
+  "private_key_id": "988b5f815d4d060322864243b448da4ae2ec9f59",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCY7KHTVv+MhTfM\nBQGMF1uvwaZR4Oqob4Kl0/S/ZmmPFTOK5U6wKzJrfB1ayKcnuGcO7POkG5TLn2v8\njP+NKmoCWlzrg4KtMOt3ozm1blM7G/nCxbh33N7it/ShEnN9eh1ecOlt6VdaKQnH\nvRvbwQbQc7XnJAYwIeRuArHKhye6oZfiHRtqU+7qMUUzsbNj9aTGYc4+rg/8C+5G\n4tAseqvU5DVIJWDUF68L/gKmC0aBbPLtLQ1T7cnnqjHTwcQZkzdthOaGwc86qr+9\nLEkzO3DKgA2XTJ4MWwUxUQvwif+ut3yk4aK4CpXc1Xw+t88DXdD8Txgz6Wv0w8tf\nRKB9asGvAgMBAAECggEAQW87fU1kErIsImHf/BxAkK95Zd6qOgFg82kC+GUvdNh7\nEgs1hN8u91wHyYFDORVID9RnGkjs/cYM9Gc2sCY+bxxQVzwSDd55WttehZocBhZd\n5DArUyqQuo1BISzeewnmCDOjRnMKfBtEQpHSGlF5g3eHlcxN04mlD0ea4NC9OLdk\nC8fHocqHfdIPMezNcl8q0nEg40wMuC7LYfjF9j22LkszCf+kSk3baWlrAv7BFYwz\nsUOLlKYdgthDROravBvDeR6j3vQkMtvHOOUtwdvMz0EWlLCGBZpnI3U1ocRjY+Tu\niER2+uGe7Qe+pxPMNWbfR5STUiDSAgPxgd8WdizXXQKBgQDHUo1O0n5QfSYumVy8\nB0fXdQb2yjfUXuxIaKzinP3fhjSJtKnRCi4OV9UN8vWvHYWX5G5a5oj4P0Uk18bd\nU5aN2Dzyoc/bup8otQzJxO42P+vF9YKd7vDZ+crcaiOUGafSqJi5L1iNSWjXkbeb\nXWqtugx3R011LlzSECDNWP73XQKBgQDEaJUc8ifCTxFZw9rtJ3qG9/3T6d7YtBeR\nctV8OUyMJhFcdl5eeppi1FmzazpAsaX0CC5qH7V0N+CWf1KML8hwch6jtqSJLeTD\nerA2v/8fvPMMqk0IGNip/hqorRov5O/feHGdvxSejN9t/Xkvj6pF4F3jgmMwgPVY\nUPuud/sIewKBgQCJqJvrSjjuweAy4rxHKAgX570NiI+SXpR1VcXBJIe5bmiuilWW\nB5/TTBna7md7r7nqM1t78Ce8u4W3ckbn6KjcAfHl6Jczu+ncJV5Vo2qZkP/20h6J\nkNJK2Nef7rXvvOBI/yOrEeXofkCoUP0rkhLxNMMTRe1a9tAoS/c7mzFMCQKBgQCp\n/aJhZS0IPgrUWHFZJPwlaOolyZr4kBZ96pffZnBcNG5+Smyu9Qo+U3A3m6zVZWwu\n5A3YCA2ywtH9L8GwV4Lx37OpGmEZ4cDHd56gJFiZjZ4G7jaxtV+A8c79AqVRoqIC\nFmqvjzw3ZdHTjriec4d55xEb4jQbPOIcSCss++cnlQKBgDfU9qa75+nj2hbHK2wn\n2VoBx8Vpls9qEI6P0MpxToUy/ySOM34xeC29mzIxLzRBd9du+IOqO3RGl4ThYlVL\n/oXu7jV0tvrcgy6W9Y/teSV5bmdSZpGH6S6415qiA70FDOUeJ6FHW0+T1XWiX2O1\nXkKN/tTF30yu4fhlpnL8aFdD\n-----END PRIVATE KEY-----\n",
+  "client_email": "vertex-express@submittalfactoryai.iam.gserviceaccount.com",
+  "client_id": "105222612219361412848",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/vertex-express%40submittalfactoryai.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
