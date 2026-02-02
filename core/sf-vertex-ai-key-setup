@@ -1,8 +1,16 @@
-Make a [ Keys ] folder under [core] : core > Keys
+Create a Keys folder inside core:
 
-then Under [Keys] folder make a sf-ai-keys.json file and copy or paste this file path in .env under this (GOOGLE_APPLICATION_CREDENTIALS)
+core/Keys/
 
-paste this credentials under sf-ai-keys.json
+Inside core/Keys/, create a file named sf-ai-keys.json.
+
+Then, in your .env file, set GOOGLE_APPLICATION_CREDENTIALS to the full path of this file, for example:
+
+GOOGLE_APPLICATION_CREDENTIALS=core/Keys/sf-ai-keys.json
+
+Finally, copy/paste the service account credentials JSON content into:
+
+core/Keys/sf-ai-keys.json
 
 {
   "type": "service_account",
