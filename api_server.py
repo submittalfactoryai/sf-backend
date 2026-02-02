@@ -213,31 +213,49 @@ async def log_api_success(
     cost: Optional[float] = None,
     start_time: Optional[float] = None
 ):
-    """Helper for successful API calls - with error protection"""
-    try:
-        process_time = int((time.time() - start_time) * 1000) if start_time else None
-        cost_decimal = Decimal(str(cost)).quantize(Decimal('0.000001')) if cost is not None else None
-        
-        db = getattr(request.state, 'db', None)
-        if db is None:
-            logger.warning("No database session available for logging")
-            return
+    """Helper for successful API calls - with retry logic for stale connections"""
+    process_time = int((time.time() - start_time) * 1000) if start_time else None
+    cost_decimal = Decimal(str(cost)).quantize(Decimal('0.000001')) if cost is not None else None
+    
+    # Try with request's db session first, fall back to fresh session
+    for attempt in range(2):
+        try:
+            if attempt == 0:
+                # First attempt: use request's session
+                db = request.state.db
+                user_id = getattr(request.state, 'user', None) and request.state.user.user_id
+            else:
+                # Second attempt: create fresh session
+                from database import SessionLocal
+                db = SessionLocal()
+                user_id = getattr(request.state, 'user', None)
+                if user_id and hasattr(user_id, 'user_id'):
+                    user_id = user_id.user_id
             
-        log_action(
-            db=db,
-            user_id=getattr(request.state, 'user', None) and request.state.user.user_id,
-            action_type=action,
-            entity_type=entity_type,
-            entity_id=entity_id,
-            user_metadata=metadata or {},
-            cost_estimate=cost_decimal,
-            process_time=process_time
-        )
-    except Exception as e:
-        logger.error(f"Failed to log API success: {e}")
-        # Don't re-raise - logging failure shouldn't break the API response
-
-
+            log_action(
+                db=db,
+                user_id=user_id,
+                action_type=action,
+                entity_type=entity_type,
+                entity_id=entity_id,
+                user_metadata=metadata or {},
+                cost_estimate=cost_decimal,
+                process_time=process_time
+            )
+            
+            if attempt == 1:
+                db.close()  # Close fresh session
+            break
+            
+        except Exception as e:
+            if attempt == 0:
+                logger.warning(f"Audit log failed with request session, retrying with fresh session: {e}")
+                try:
+                    request.state.db.rollback()
+                except:
+                    pass
+            else:
+                logger.error(f"Audit log failed even with fresh session: {e}")
 
 async def log_api_failure(
     request: Request,
@@ -247,37 +265,47 @@ async def log_api_failure(
     error: Optional[str] = None,
     start_time: Optional[float] = None
 ):
-    """Helper for failed API calls - with error protection"""
-    try:
-        process_time = int((time.time() - start_time) * 1000) if start_time else None
-        
-        db = getattr(request.state, 'db', None)
-        if db is None:
-            logger.warning("No database session available for logging")
-            return
-        
-        # Try to get user_id safely without triggering lazy load
-        user_id = None
+    """Helper for failed API calls - with retry logic for stale connections"""
+    process_time = int((time.time() - start_time) * 1000) if start_time else None
+    
+    # Try with request's db session first, fall back to fresh session
+    for attempt in range(2):
         try:
-            user = getattr(request.state, 'user', None)
-            if user is not None:
-                # Access the ID directly if already loaded
-                user_id = user.__dict__.get('user_id')
-        except Exception:
-            pass  # Can't get user_id, that's okay
-        
-        log_action(
-            db=db,
-            user_id=user_id,
-            action_type=f"{action}_Failed",
-            entity_type=entity_type,
-            entity_id=entity_id,
-            user_metadata={"error": str(error)[:500]} if error else {},
-            process_time=process_time
-        )
-    except Exception as e:
-        logger.error(f"Failed to log API failure: {e}")
-        # Don't re-raise - logging failure shouldn't break the error response
+            if attempt == 0:
+                # First attempt: use request's session
+                db = request.state.db
+                user_id = getattr(request.state, 'user', None) and request.state.user.user_id
+            else:
+                # Second attempt: create fresh session
+                from database import SessionLocal
+                db = SessionLocal()
+                user_id = getattr(request.state, 'user', None)
+                if user_id and hasattr(user_id, 'user_id'):
+                    user_id = user_id.user_id
+            
+            log_action(
+                db=db,
+                user_id=user_id,
+                action_type=f"{action}_Failed",
+                entity_type=entity_type,
+                entity_id=entity_id,
+                user_metadata={"error": str(error)[:500]} if error else {},
+                process_time=process_time
+            )
+            
+            if attempt == 1:
+                db.close()  # Close fresh session
+            break
+            
+        except Exception as e:
+            if attempt == 0:
+                logger.warning(f"Audit log (failure) failed with request session, retrying with fresh session: {e}")
+                try:
+                    request.state.db.rollback()
+                except:
+                    pass
+            else:
+                logger.error(f"Audit log (failure) failed even with fresh session: {e}")
 
 # Initialize logging ONCE at module load
 # Creates: logs/app.log (current), logs/app.log.2025-12-09 (rotated), etc.
@@ -1675,17 +1703,14 @@ async def extract_data(
         
     except Exception as e:
         logger.error(f"❌ Unexpected error during extraction: {e}", exc_info=True)
-        try:
-            await log_api_failure(
-                request=request,
-                action="Extract",
-                entity_type="PDF",
-                entity_id=safe_filename,
-                error=str(e),
-                start_time=request_start_time
-            )
-        except Exception as log_error:
-            logger.error(f"Failed to log error (ignoring): {log_error}")
+        await log_api_failure(
+            request=request,
+            action="Extract",
+            entity_type="PDF",
+            entity_id=safe_filename,
+            error=str(e),
+            start_time=request_start_time
+        )
         
         # Try to classify the error
         error_str = str(e).lower()
@@ -3390,27 +3415,39 @@ async def get_usage_summary(session_id: Optional[str] = Query(None)):
 
 @app.get("/api/debug/gemini-config")
 async def debug_gemini_config():
-    """Debug endpoint to check Gemini API configuration"""
+    """Debug endpoint to check Gemini API configuration via Vertex AI"""
     import os
-    import google.generativeai as genai
+    from google import genai
+    from google.genai import types
+    
+    # Vertex AI Configuration
+    google_cloud_project = os.getenv("GOOGLE_CLOUD_PROJECT", "")
+    google_cloud_location = os.getenv("GOOGLE_CLOUD_LOCATION", "us-central1")
+    credentials_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS", "")
     
     result = {
-        "google_api_key_present": bool(os.getenv("GOOGLE_API_KEY")),
-        "google_api_key_length": len(os.getenv("GOOGLE_API_KEY", "")),
+        "google_cloud_project": google_cloud_project,
+        "google_cloud_location": google_cloud_location,
+        "credentials_configured": bool(credentials_path),
         "model_name": "gemini-2.5-flash"
     }
     
-    # Test basic API configuration
+    # Test basic Vertex AI configuration
     try:
-        api_key = os.getenv("GOOGLE_API_KEY")
-        if api_key:
-            genai.configure(api_key=api_key)
-            model = genai.GenerativeModel("gemini-2.5-flash-preview-04-17")
+        if google_cloud_project:
+            client = genai.Client(
+                vertexai=True,
+                project=google_cloud_project,
+                location=google_cloud_location
+            )
             result["api_configuration_success"] = True
             
             # Test a very simple generation call
             try:
-                test_response = model.generate_content("Say 'test'")
+                test_response = client.models.generate_content(
+                    model="gemini-2.0-flash",
+                    contents="Say 'test'"
+                )
                 result["simple_generation_success"] = True
                 result["simple_generation_response"] = test_response.text if hasattr(test_response, 'text') else None
                 result["has_usage_metadata"] = hasattr(test_response, 'usage_metadata')
@@ -3424,7 +3461,7 @@ async def debug_gemini_config():
                 result["simple_generation_error"] = str(e)
         else:
             result["api_configuration_success"] = False
-            result["error"] = "No API key found"
+            result["error"] = "No Google Cloud Project configured"
     except Exception as e:
         result["api_configuration_success"] = False
         result["error"] = str(e)

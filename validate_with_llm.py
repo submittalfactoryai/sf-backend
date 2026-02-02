@@ -10,7 +10,8 @@ import logging
 import time
 import re
 from typing import Dict, List, Any, Optional, Tuple
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 from dotenv import load_dotenv
 
 # Import the PDF text extraction utility
@@ -29,11 +30,23 @@ logger = logging.getLogger(__name__)
 # Load environment variables
 load_dotenv()
 
-# Configure Google Gemini API
-GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
-if not GEMINI_API_KEY:
-    raise EnvironmentError("GEMINI_API_KEY not found in environment variables")
-genai.configure(api_key=GEMINI_API_KEY)
+# Vertex AI Configuration
+GOOGLE_CLOUD_PROJECT = os.getenv("GOOGLE_CLOUD_PROJECT", "submittalfactoryai")
+GOOGLE_CLOUD_LOCATION = os.getenv("GOOGLE_CLOUD_LOCATION", "us-central1")
+GOOGLE_APPLICATION_CREDENTIALS = os.getenv("GOOGLE_APPLICATION_CREDENTIALS", "")
+
+# Set credentials path for Google Cloud SDK
+if GOOGLE_APPLICATION_CREDENTIALS:
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
+
+# Initialize Vertex AI client
+def get_vertex_client():
+    """Get or create Vertex AI client."""
+    return genai.Client(
+        vertexai=True,
+        project=GOOGLE_CLOUD_PROJECT,
+        location=GOOGLE_CLOUD_LOCATION
+    )
 
 # Select the model to use for validation
 MODEL_NAME = "gemini-2.0-flash"
@@ -262,20 +275,23 @@ def validate_pdf_with_llm(
         # Create the validation prompt
         prompt = create_validation_prompt(product_data, pdf_text)
         
-        # Initialize the model
-        logger.info(f"Using {MODEL_NAME} for validation")
-        model = genai.GenerativeModel(
-            model_name=MODEL_NAME,
-            generation_config={
-                "temperature": temperature,
-                "max_output_tokens": max_output_tokens,
-            }
+        # Initialize Vertex AI client and send request
+        logger.info(f"Using {MODEL_NAME} for validation via Vertex AI")
+        client = get_vertex_client()
+        
+        generation_config = types.GenerateContentConfig(
+            temperature=temperature,
+            max_output_tokens=max_output_tokens,
         )
         
         # Get response from LLM
         logger.info("Sending validation request to LLM")
         start_time = time.time()
-        response = model.generate_content(prompt)
+        response = client.models.generate_content(
+            model=MODEL_NAME,
+            contents=prompt,
+            config=generation_config,
+        )
         elapsed_time = time.time() - start_time
         response_text = response.text
         logger.info(f"Raw LLM response before parsing: {response_text}")

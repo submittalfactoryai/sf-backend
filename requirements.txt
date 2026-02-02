@@ -14,6 +14,7 @@ pypdf
 PyCryptodome
 httpx
 google-genai
+google-cloud-aiplatform
 reportlab
 weasyprint
 aiohttp

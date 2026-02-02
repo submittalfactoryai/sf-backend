@@ -79,12 +79,25 @@ def get_cache_stats():
         "cache_expiry_hours": CACHE_EXPIRY_HOURS
     }
 
-# API key
-api_key = os.getenv("GEMINI_API_KEY")
-if not api_key:
-    raise ValueError("GEMINI_API_KEY not found. Please ensure it is set in backend/.env and the file is being loaded correctly.")
+# Vertex AI Configuration
+GOOGLE_CLOUD_PROJECT = os.getenv("GOOGLE_CLOUD_PROJECT", "submittalfactoryai")
+GOOGLE_CLOUD_LOCATION = os.getenv("GOOGLE_CLOUD_LOCATION", "us-central1")
+GOOGLE_APPLICATION_CREDENTIALS = os.getenv("GOOGLE_APPLICATION_CREDENTIALS", "")
 
-client = genai.Client(api_key=api_key)
+# Set credentials path for Google Cloud SDK
+if GOOGLE_APPLICATION_CREDENTIALS:
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
+
+# Initialize Vertex AI client
+def get_vertex_client():
+    """Get or create Vertex AI client."""
+    return genai.Client(
+        vertexai=True,
+        project=GOOGLE_CLOUD_PROJECT,
+        location=GOOGLE_CLOUD_LOCATION
+    )
+
+client = get_vertex_client()
 model_id = "gemini-2.0-flash"
 
 google_search_tool = Tool(google_search=GoogleSearch())

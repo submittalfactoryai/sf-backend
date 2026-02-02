@@ -7,9 +7,11 @@ from typing import Dict, Any, Optional, Tuple, List
 from enum import Enum
 
 try:
-    import google.generativeai as genai
+    from google import genai
+    from google.genai import types
 except ImportError:
     genai = None
+    types = None
 
 try:
     import fitz  # PyMuPDF
@@ -106,6 +108,24 @@ SECTION_PATTERNS = {
 DETECTION_MODEL_NAME = os.getenv("SECTION_DETECTION_MODEL", "gemini-2.0-flash")
 DETECTION_TIMEOUT_S = int(os.getenv("SECTION_DETECTION_TIMEOUT_S", "120"))
 MAX_DOCUMENT_CHARS = int(os.getenv("SECTION_DETECTION_MAX_CHARS", "50000"))
+
+# Vertex AI Configuration
+GOOGLE_CLOUD_PROJECT = os.getenv("GOOGLE_CLOUD_PROJECT", "submittalfactoryai")
+GOOGLE_CLOUD_LOCATION = os.getenv("GOOGLE_CLOUD_LOCATION", "us-central1")
+GOOGLE_APPLICATION_CREDENTIALS = os.getenv("GOOGLE_APPLICATION_CREDENTIALS", "")
+
+# Set credentials path for Google Cloud SDK
+if GOOGLE_APPLICATION_CREDENTIALS:
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
+
+# Initialize Vertex AI client
+def get_vertex_client():
+    """Get or create Vertex AI client."""
+    return genai.Client(
+        vertexai=True,
+        project=GOOGLE_CLOUD_PROJECT,
+        location=GOOGLE_CLOUD_LOCATION
+    )
 
 
 # =============================================================================
@@ -336,34 +356,25 @@ def analyze_document_with_gemini(document_text: str) -> Dict[str, Any]:
     if not genai:
         raise GeminiNotAvailableError(
             "Google Generative AI library is not installed. "
-            "Install with: pip install google-generativeai"
-        )
-    
-    # Check API key
-    api_key = os.getenv("GOOGLE_API_KEY")
-    if not api_key:
-        raise APIKeyNotConfiguredError(
-            "GOOGLE_API_KEY environment variable is not configured. "
-            "Set it with: export GOOGLE_API_KEY='your-api-key'"
+            "Install with: pip install google-genai"
         )
     
     try:
-        genai.configure(api_key=api_key)
-        model = genai.GenerativeModel(DETECTION_MODEL_NAME)
+        client = get_vertex_client()
         
         prompt = build_full_document_analysis_prompt(document_text)
         
-        generation_config = {
-            "max_output_tokens": 2000,
-            "temperature": 0.1,
-        }
+        generation_config = types.GenerateContentConfig(
+            max_output_tokens=2000,
+            temperature=0.1,
+        )
         
-        logger.info(f"Sending {len(document_text)} chars to Gemini model '{DETECTION_MODEL_NAME}' for analysis...")
+        logger.info(f"Sending {len(document_text)} chars to Gemini model '{DETECTION_MODEL_NAME}' via Vertex AI for analysis...")
         
-        response = model.generate_content(
-            prompt,
-            generation_config=generation_config,
-            request_options={"timeout": DETECTION_TIMEOUT_S}
+        response = client.models.generate_content(
+            model=DETECTION_MODEL_NAME,
+            contents=prompt,
+            config=generation_config,
         )
         
         # Check if response has valid content

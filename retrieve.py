@@ -19,7 +19,8 @@ from contextlib import contextmanager
 from datetime import datetime
 from typing import Any, Dict, List, Optional, Tuple
 
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 from dotenv import load_dotenv
 
 # optional: for local PDF text extraction (no Pinecone)
@@ -145,16 +146,33 @@ def build_logger(verbosity: int = 0, req_id: Optional[str] = None) -> logging.Lo
 # ------------------------------------------------------------------------------
 load_dotenv()
 
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+# Vertex AI Configuration
+GOOGLE_CLOUD_PROJECT = os.getenv("GOOGLE_CLOUD_PROJECT", "submittalfactoryai")
+GOOGLE_CLOUD_LOCATION = os.getenv("GOOGLE_CLOUD_LOCATION", "us-central1")
+GOOGLE_APPLICATION_CREDENTIALS = os.getenv("GOOGLE_APPLICATION_CREDENTIALS", "")
+
+# Set credentials path for Google Cloud SDK
+if GOOGLE_APPLICATION_CREDENTIALS:
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
+
 GEMINI_MODEL_NAME = os.getenv("GEMINI_MODEL_NAME", "gemini-2.5-flash")
 
 # char guard before sending to LLM
 MAX_SECTION_CHARS = int(os.getenv("MAX_SECTION_CHARS", "180000"))
-MAX_OUTPUT_TOKENS = int(os.getenv("MAX_OUTPUT_TOKENS", "94000"))  # you used 94k
+MAX_OUTPUT_TOKENS = int(os.getenv("MAX_OUTPUT_TOKENS", "65000"))  # Vertex AI max is 65536
 TEMPERATURE = float(os.getenv("TEMPERATURE", "0.1"))
 REQUEST_TIMEOUT_S = int(os.getenv("REQUEST_TIMEOUT_S", "18000000"))
 RETRIES = int(os.getenv("RETRIES", "1"))  # 1 retry (total 2 attempts)
 RETRY_BACKOFF_S = float(os.getenv("RETRY_BACKOFF_S", "2.0"))
+
+# Initialize Vertex AI client
+def get_vertex_client():
+    """Get or create Vertex AI client."""
+    return genai.Client(
+        vertexai=True,
+        project=GOOGLE_CLOUD_PROJECT,
+        location=GOOGLE_CLOUD_LOCATION
+    )
 
 # ------------------------------------------------------------------------------
 # PART 2 – PRODUCTS isolation (no web, no Pinecone)
@@ -336,7 +354,7 @@ def _isolate_products(logger: logging.Logger, full_text: str) -> Tuple[str, Opti
 # ------------------------------------------------------------------------------
 def call_gemini_for_extraction(prompt: str, model_name: str) -> Dict[str, Any]:
     """
-    Calls the Gemini API with the given prompt and model name.
+    Calls the Gemini API via Vertex AI with the given prompt and model name.
     Returns a dictionary containing the response text, token counts, and error info.
     Enhanced with standardized error handling for SOW Section 6 compliance.
     """
@@ -347,9 +365,12 @@ def call_gemini_for_extraction(prompt: str, model_name: str) -> Dict[str, Any]:
     error_info = None
 
     try:
-        api_key = GOOGLE_API_KEY
-        if not api_key:
-            logger.error("GOOGLE_API_KEY is not set or is empty")
+        # Initialize Vertex AI client
+        try:
+            client = get_vertex_client()
+            logger.info(f"Vertex AI client initialized for project: {GOOGLE_CLOUD_PROJECT}")
+        except Exception as client_error:
+            logger.error(f"Failed to initialize Vertex AI client: {client_error}")
             return {
                 "response_text": None, 
                 "prompt_tokens": 0, 
@@ -357,54 +378,28 @@ def call_gemini_for_extraction(prompt: str, model_name: str) -> Dict[str, Any]:
                 "error": _create_error_result(
                     ErrorCode.API_KEY_INVALID if ERROR_HANDLING_AVAILABLE else "3003",
                     "AI service authentication failed. Please contact support.",
-                    {"technical": "GOOGLE_API_KEY not configured"}
-                )
-            }
-
-        logger.info(f"API Key available: {api_key[:10]}..." if len(api_key or "") > 10 else "API Key too short")
-
-        genai.configure(api_key=api_key)
-        
-        try:
-            model = genai.GenerativeModel(model_name)
-        except Exception as model_error:
-            logger.error(f"Failed to initialize model {model_name}: {model_error}")
-            return {
-                "response_text": None,
-                "prompt_tokens": 0,
-                "completion_tokens": 0,
-                "error": _create_error_result(
-                    ErrorCode.MODEL_NOT_FOUND if ERROR_HANDLING_AVAILABLE else "3001",
-                    "The AI extraction service is temporarily unavailable. Our team has been notified.",
-                    {"model": model_name, "technical": str(model_error)}
+                    {"technical": f"Vertex AI client init failed: {client_error}"}
                 )
             }
 
         logger.info(f"Sending request to Gemini model: {model_name} (for product extraction)")
         logger.info(f"Prompt length: {len(prompt)} characters")
 
-        generation_config = {
-            "max_output_tokens": MAX_OUTPUT_TOKENS,
-            "temperature": TEMPERATURE,
-        }
-
-        safety_settings = [
-            {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
-            {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
-            {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
-            {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"},
-        ]
+        # Vertex AI generation config
+        generation_config = types.GenerateContentConfig(
+            max_output_tokens=MAX_OUTPUT_TOKENS,
+            temperature=TEMPERATURE,
+        )
 
         # --- retries with detailed error handling ---
         last_err = None
         for attempt in range(1, (RETRIES + 2)):
             try:
                 with timed_step(logger, f"gemini_generate_attempt_{attempt}"):
-                    response = model.generate_content(
-                        prompt,
-                        generation_config=generation_config,
-                        safety_settings=safety_settings,
-                        request_options={"timeout": REQUEST_TIMEOUT_S},
+                    response = client.models.generate_content(
+                        model=model_name,
+                        contents=prompt,
+                        config=generation_config,
                     )
                 logger.info("Received response from Gemini API (for product extraction).")
                 logger.info(f"Response type: {type(response)}")

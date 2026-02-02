@@ -5,7 +5,8 @@ import argparse
 import subprocess  # Added for calling metadata.py
 import logging  # Add logging import
 from pinecone import Pinecone, ServerlessSpec, PodSpec  # Updated import for pinecone-client v3+
-import google.generativeai as genai  # Import Google Generative AI library
+from google import genai
+from google.genai import types
 from tqdm.auto import tqdm  # Progress bar
 import time  # To handle potential rate limits
 from dotenv import load_dotenv
@@ -32,15 +33,31 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 PINECONE_API_KEY = os.environ.get("PINECONE_API_KEY") or "YOUR_PINECONE_API_KEY"  # Replace or set env var
 PINECONE_ENVIRONMENT = os.environ.get("PINECONE_ENVIRONMENT") or "YOUR_PINECONE_ENVIRONMENT"  # Replace or set env var (Cloud region for PodSpec)
 
-# Google AI Configuration
-GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY") or "YOUR_GOOGLE_API_KEY"  # Replace or set env var
+# Vertex AI Configuration
+GOOGLE_CLOUD_PROJECT = os.environ.get("GOOGLE_CLOUD_PROJECT") or "submittalfactoryai"
+GOOGLE_CLOUD_LOCATION = os.environ.get("GOOGLE_CLOUD_LOCATION") or "us-central1"
+GOOGLE_APPLICATION_CREDENTIALS = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS") or ""
+
+# Set credentials path for Google Cloud SDK
+if GOOGLE_APPLICATION_CREDENTIALS:
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
+
 # Specify the Gemini Embedding model
 # NOTE: Ensure your Pinecone index dimension matches this model (typically 768 for embedding-001/gemini models)
-EMBEDDING_MODEL_NAME = "models/embedding-001"  # Using the stable model name, often compatible
+EMBEDDING_MODEL_NAME = "text-embedding-004"  # Updated model name for Vertex AI
 
 # Other Configuration
 BATCH_SIZE = 100  # Process records in batches for upserting (Pinecone limit)
 EMBEDDING_BATCH_SIZE = 100  # How many texts to embed in one API call to Google (max 100)
+
+# Initialize Vertex AI client
+def get_vertex_client():
+    """Get or create Vertex AI client."""
+    return genai.Client(
+        vertexai=True,
+        project=GOOGLE_CLOUD_PROJECT,
+        location=GOOGLE_CLOUD_LOCATION
+    )
 
 # --- Helper Function ---
 def generate_safe_id(text, max_length=512):
@@ -79,9 +96,6 @@ def main(pdf_path):
     # 1. Validate Configuration
     if not PINECONE_API_KEY or PINECONE_API_KEY == "YOUR_PINECONE_API_KEY":
         logging.error("Error: PINECONE_API_KEY is not set.")
-        return
-    if not GOOGLE_API_KEY or GOOGLE_API_KEY == "YOUR_GOOGLE_API_KEY":
-        logging.error("Error: GOOGLE_API_KEY is not set.")
         return
     if not os.path.exists(pdf_path):
         logging.error(f"Error: PDF file not found at {pdf_path}")
@@ -142,14 +156,14 @@ def main(pdf_path):
     chunks = chunk_text(text_to_upload, max_chunk_size=2000, overlap=200)
     logging.info(f"Text split into {len(chunks)} chunks for embedding.")
 
-    # --- Initialize Google AI Client ---
-    logging.info(f"Configuring Google AI with model: {EMBEDDING_MODEL_NAME}...")
+    # --- Initialize Vertex AI Client ---
+    logging.info(f"Initializing Vertex AI client for embeddings with model: {EMBEDDING_MODEL_NAME}...")
     try:
-        genai.configure(api_key=GOOGLE_API_KEY)
+        vertex_client = get_vertex_client()
         expected_dimension = 768
         logging.info(f"Expected embedding dimension: {expected_dimension}")
     except Exception as e:
-        logging.error(f"Error configuring Google AI: {e}")
+        logging.error(f"Error initializing Vertex AI client: {e}")
         return
 
     # --- Initialize Pinecone Connection ---
@@ -203,15 +217,14 @@ def main(pdf_path):
     logging.info(f"Generating embeddings for {len(items_to_embed)} items...")
     all_embeddings = []
     try:
-        response = genai.embed_content(
+        response = vertex_client.models.embed_content(
             model=EMBEDDING_MODEL_NAME,
-            content=[item['text'] for item in items_to_embed],
-            task_type="retrieval_document"
+            contents=[item['text'] for item in items_to_embed],
         )
-        if 'embedding' in response and len(response['embedding']) == len(items_to_embed):
-            all_embeddings.extend(response['embedding'])
+        if hasattr(response, 'embeddings') and len(response.embeddings) == len(items_to_embed):
+            all_embeddings.extend([emb.values for emb in response.embeddings])
         else:
-            logging.warning(f"Warning: Mismatch in embedding count or missing 'embedding' key. Expected {len(items_to_embed)}, Response keys: {response.keys()}")
+            logging.warning(f"Warning: Mismatch in embedding count or missing 'embeddings'. Expected {len(items_to_embed)}")
             all_embeddings.extend([None] * len(items_to_embed))
     except Exception as e:
         logging.error(f"Error generating embeddings: {e}")

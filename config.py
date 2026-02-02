@@ -54,6 +54,11 @@ class Settings(BaseSettings):
 
     jwt_issuer: str = Field(..., alias="JWT_ISSUER")
     jwt_audience: str = Field(..., alias="JWT_AUDIENCE")
+    
+    # Vertex AI Configuration
+    google_cloud_project: str = Field(default="", alias="GOOGLE_CLOUD_PROJECT")
+    google_cloud_location: str = Field(default="us-central1", alias="GOOGLE_CLOUD_LOCATION")
+    google_application_credentials: str = Field(default="", alias="GOOGLE_APPLICATION_CREDENTIALS")
 
     @field_validator('cors_origins', mode='before')
     @classmethod
@@ -91,8 +96,12 @@ def validate_required_settings():
     """Validate that required environment variables are set"""
     errors = []
     
-    if not settings.google_api_key:
-        errors.append("GOOGLE_API_KEY is required. Get one from: https://aistudio.google.com/app/apikey")
+    # Check for Vertex AI credentials (preferred) OR legacy API key
+    has_vertex_ai = settings.google_cloud_project and settings.google_application_credentials
+    has_api_key = settings.google_api_key
+    
+    if not has_vertex_ai and not has_api_key:
+        errors.append("Either Vertex AI credentials (GOOGLE_CLOUD_PROJECT + GOOGLE_APPLICATION_CREDENTIALS) or GOOGLE_API_KEY is required")
     
     if not settings.serpapi_api_key:
         # SerpAPI is optional but warn if missing

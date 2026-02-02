@@ -1,5 +1,4 @@
 # database.py
-# ✅ OPTIMIZED FOR LONG-RUNNING OPERATIONS + AIVEN FREE TIER (25 connections max)
 
 from typing import Generator
 from contextlib import contextmanager
@@ -12,35 +11,27 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-# =============================================================================
-# SINGLE ENGINE - OPTIMIZED FOR BOTH LONG OPERATIONS AND CONNECTION LIMITS
-# =============================================================================
-# Aiven Free Tier: 25 max connections
-# With 2 workers: each can use up to 8 connections (16 total)
-# Leaves 9 for: pgAdmin, Aiven management, migrations, logging
-# =============================================================================
-
 engine = create_engine(
     settings.database_url,
     
-    # === Connection Pool Settings (Conservative for Aiven Free) ===
+    # === Connection Pool Settings ===
     poolclass=QueuePool,
-    pool_pre_ping=True,              # CRITICAL: Validates connection before use
-    pool_size=10,                     # Reduced from 10 (conservative)
+    pool_pre_ping=True,              # Check connection before each use
+    pool_size=10,                    # Base connections per worker
     max_overflow=3,                  # Extra connections under load
-    pool_recycle=120,                # Recycle every 2 mins (aggressive for long ops)
+    pool_recycle=1200,               # Recycle every 20 mins (for long processes)
     pool_timeout=30,                 # Wait max 30s for connection
     pool_reset_on_return='rollback',
     
-    # === AGGRESSIVE TCP Keepalive for 15-20 min operations ===
+    # === Connection Settings with TCP Keepalive for Neon DB ===
     connect_args={
         "connect_timeout": 30,
         "application_name": "SF_Backend",
         
-        # TCP Keepalive - keeps connection alive during long operations
+        # TCP Keepalive - prevents Neon from killing idle connections
         "keepalives": 1,
-        "keepalives_idle": 20,       # Start probes after 20s idle
-        "keepalives_interval": 10,   # Probe every 10s
+        "keepalives_idle": 30,       # Start probes after 30s idle (was 60)
+        "keepalives_interval": 10,   # Probe every 10s (was 15)
         "keepalives_count": 6,       # 6 failed probes = dead connection
     },
     
@@ -49,19 +40,19 @@ engine = create_engine(
 )
 
 
-# =============================================================================
-# EVENT LISTENERS
-# =============================================================================
+# =====================================================================
+# EVENT LISTENERS (Logging Only - No Extra Queries!)
+# =====================================================================
 
 @event.listens_for(engine, "connect")
 def on_connect(dbapi_connection, connection_record):
-    """Log when new connection is created"""
+    """Log when new connection is created (no extra queries)"""
     logger.debug("🔌 New database connection created")
 
 
 @event.listens_for(engine, "checkout")
 def on_checkout(dbapi_connection, connection_record, connection_proxy):
-    """Validate connection is still alive on checkout"""
+    """Log when connection is checked out (no extra queries)"""
     logger.debug("📤 Connection checked out from pool")
 
 
@@ -73,16 +64,16 @@ def on_checkin(dbapi_connection, connection_record):
 
 @event.listens_for(engine, "invalidate")
 def on_invalidate(dbapi_connection, connection_record, exception):
-    """Log when connection is invalidated"""
+    """Log when connection is invalidated (important for debugging)"""
     if exception:
         logger.warning(f"⚠️ Connection invalidated: {exception}")
     else:
         logger.debug("Connection invalidated (recycled)")
 
 
-# =============================================================================
+# =====================================================================
 # SESSION CONFIGURATION
-# =============================================================================
+# =====================================================================
 
 SessionLocal = sessionmaker(
     autocommit=False,
@@ -94,9 +85,9 @@ SessionLocal = sessionmaker(
 Base = declarative_base()
 
 
-# =============================================================================
+# =====================================================================
 # SESSION MANAGEMENT
-# =============================================================================
+# =====================================================================
 
 def get_db() -> Generator[Session, None, None]:
     """
@@ -110,21 +101,10 @@ def get_db() -> Generator[Session, None, None]:
         db.close()
 
 
-def get_fresh_session() -> Session:
-    """
-    Get a fresh database session from the pool.
-    Uses pool_pre_ping to ensure connection is valid.
-    
-    NOTE: Caller is responsible for closing the session!
-    """
-    return SessionLocal()
-
-
 @contextmanager
 def session_scope() -> Generator[Session, None, None]:
     """
     Context manager for database sessions outside FastAPI routes.
-    Automatically handles commit/rollback/close.
     """
     session = SessionLocal()
     try:
@@ -137,35 +117,9 @@ def session_scope() -> Generator[Session, None, None]:
         session.close()
 
 
-@contextmanager
-def logging_session_scope() -> Generator[Session, None, None]:
-    """
-    Context manager specifically for logging operations.
-    
-    Uses the same pool but with fresh session.
-    pool_pre_ping will validate connection before use.
-    """
-    session = SessionLocal()
-    try:
-        yield session
-        session.commit()
-    except Exception as e:
-        logger.warning(f"Logging session error: {e}")
-        try:
-            session.rollback()
-        except Exception:
-            pass
-        raise
-    finally:
-        try:
-            session.close()
-        except Exception:
-            pass
-
-
-# =============================================================================
+# =====================================================================
 # INITIALIZATION AND CLEANUP
-# =============================================================================
+# =====================================================================
 
 def init_db():
     """Initialize database by creating all tables."""
@@ -179,9 +133,9 @@ def close_db_connection():
     logger.info("✅ Database connections disposed")
 
 
-# =============================================================================
+# =====================================================================
 # MONITORING
-# =============================================================================
+# =====================================================================
 
 def get_pool_status() -> dict:
     """Get current connection pool status for monitoring."""
@@ -191,7 +145,6 @@ def get_pool_status() -> dict:
         "checked_out": pool.checkedout(),
         "overflow": pool.overflow(),
         "checked_in": pool.checkedin(),
-        "max_possible": 5 + 3,  # pool_size + max_overflow
     }
 
 

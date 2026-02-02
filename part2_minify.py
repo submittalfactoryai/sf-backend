@@ -14,7 +14,12 @@ import datetime
 from pathlib import Path
 from typing import Optional, Tuple, Dict, Any
 
-import google.generativeai as genai
+from google import genai
+from google.genai import types
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Import standardized error handling
 try:
@@ -52,6 +57,24 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 MODEL_MINIFY = os.getenv("GEMINI_MINIFY_MODEL", "gemini-2.5-flash")
 DEFAULT_TARGET_CHARS = int(os.getenv("PART2_MINIFY_TARGET_CHARS", "25000"))
 HARD_MAX_CHARS = int(os.getenv("PART2_MINIFY_HARD_MAX_CHARS", "30000"))
+
+# Vertex AI Configuration
+GOOGLE_CLOUD_PROJECT = os.getenv("GOOGLE_CLOUD_PROJECT", "submittalfactoryai")
+GOOGLE_CLOUD_LOCATION = os.getenv("GOOGLE_CLOUD_LOCATION", "us-central1")
+GOOGLE_APPLICATION_CREDENTIALS = os.getenv("GOOGLE_APPLICATION_CREDENTIALS", "")
+
+# Set credentials path for Google Cloud SDK
+if GOOGLE_APPLICATION_CREDENTIALS:
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
+
+# Initialize Vertex AI client
+def get_vertex_client():
+    """Get or create Vertex AI client."""
+    return genai.Client(
+        vertexai=True,
+        project=GOOGLE_CLOUD_PROJECT,
+        location=GOOGLE_CLOUD_LOCATION
+    )
 
 # File exports
 PROMPT_EXPORT_DIR = os.getenv("PROMPT_EXPORT_DIR", "./prompts")
@@ -182,48 +205,32 @@ def _choose_api_key() -> Optional[str]:
 
 def _gemini_minify_call(prompt: str, model_name: str) -> Tuple[str, Optional[Dict]]:
     """
-    Direct call to Gemini; returns (plain_text, error_dict).
+    Direct call to Gemini via Vertex AI; returns (plain_text, error_dict).
     If successful, error_dict is None.
     """
-    api_key = _choose_api_key()
-    if not api_key:
-        logging.error("No Gemini API key set (GOOGLE_API_KEY or GEMINI_API_KEY).")
+    try:
+        client = get_vertex_client()
+    except Exception as e:
+        logging.error(f"Failed to initialize Vertex AI client: {e}")
         return "", _create_error_result(
             ErrorCode.API_KEY_INVALID if ERROR_HANDLING_AVAILABLE else "3003",
             "AI service authentication failed. Please contact support.",
-            {"technical": "No API key configured"}
+            {"technical": f"Vertex AI client init failed: {e}"}
         )
 
-    genai.configure(api_key=api_key)
-    
-    try:
-        model = genai.GenerativeModel(model_name)
-    except Exception as e:
-        logging.error(f"Failed to initialize model {model_name}: {e}")
-        error_code, user_message = _classify_minify_error(e)
-        return "", _create_error_result(error_code, user_message, {"model": model_name, "technical": str(e)})
+    generation_config = types.GenerateContentConfig(
+        max_output_tokens=65000,   # Vertex AI max is 65536
+        temperature=0.1,
+    )
 
-    generation_config = {
-        "max_output_tokens": 94000,   # generous ceiling; we still enforce HARD_MAX_CHARS
-        "temperature": 0.1,
-    }
-    # permissive safety to avoid silencing technical content
-    safety_settings = [
-        {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
-        {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
-        {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
-        {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"},
-    ]
-
-    logging.info(f"Minify API Key available: {api_key[:10]}..." if len(api_key) >= 10 else "API Key loaded")
-    logging.info(f"Minify Sending request to Gemini model: {model_name} (for part2 minification)")
+    logging.info(f"Minify Sending request to Gemini model: {model_name} via Vertex AI (for part2 minification)")
     logging.info(f"Before Minify Prompt length: {len(prompt)} characters")
 
     try:
-        response = model.generate_content(
-            prompt,
-            generation_config=generation_config,
-            safety_settings=safety_settings
+        response = client.models.generate_content(
+            model=model_name,
+            contents=prompt,
+            config=generation_config,
         )
     except Exception as e:
         error_code, user_message = _classify_minify_error(e)

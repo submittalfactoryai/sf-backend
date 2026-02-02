@@ -6,23 +6,38 @@ import logging
 import concurrent.futures
 import traceback
 import fitz  # Added for PyMuPDF
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 from typing import Optional, Dict, Any
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # --- Configuration ---
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 MODEL_NAME = "gemini-1.5-flash" # Use a fast model for metadata
 TIMEOUT_SECONDS = 60
 
-# --- Helper Functions ---
+# Vertex AI Configuration
+GOOGLE_CLOUD_PROJECT = os.getenv("GOOGLE_CLOUD_PROJECT", "submittalfactoryai")
+GOOGLE_CLOUD_LOCATION = os.getenv("GOOGLE_CLOUD_LOCATION", "us-central1")
+GOOGLE_APPLICATION_CREDENTIALS = os.getenv("GOOGLE_APPLICATION_CREDENTIALS", "")
 
-def _get_gemini_api_key() -> str:
-    """Retrieves the Gemini API key from environment variables."""
-    api_key = os.getenv("GOOGLE_API_KEY")
-    if not api_key:
-        logging.error("GOOGLE_API_KEY environment variable not set.")
-        raise ValueError("GOOGLE_API_KEY not set in environment.")
-    return api_key
+# Set credentials path for Google Cloud SDK
+if GOOGLE_APPLICATION_CREDENTIALS:
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
+
+# Initialize Vertex AI client
+def get_vertex_client():
+    """Get or create Vertex AI client."""
+    return genai.Client(
+        vertexai=True,
+        project=GOOGLE_CLOUD_PROJECT,
+        location=GOOGLE_CLOUD_LOCATION
+    )
+
+# --- Helper Functions ---
 
 def extract_first_page_text(pdf_path: str) -> Optional[str]:
     """Extracts text from the first page of a PDF using PyMuPDF (fitz)."""
@@ -105,14 +120,22 @@ def call_gemini_for_metadata(text_content: str) -> Dict[str, Any]:
     """
 
     try:
-        api_key = _get_gemini_api_key()
-        genai.configure(api_key=api_key)
-        model = genai.GenerativeModel(MODEL_NAME)
+        client = get_vertex_client()
+        
+        generation_config = types.GenerateContentConfig(
+            temperature=0.1,
+            max_output_tokens=1024,
+        )
 
-        logging.info(f"Sending metadata request to Gemini model: {MODEL_NAME}")
+        logging.info(f"Sending metadata request to Gemini model: {MODEL_NAME} via Vertex AI")
 
         with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
-            future = executor.submit(model.generate_content, prompt)
+            future = executor.submit(
+                client.models.generate_content,
+                model=MODEL_NAME,
+                contents=prompt,
+                config=generation_config,
+            )
             try:
                 response = future.result(timeout=TIMEOUT_SECONDS)
             except concurrent.futures.TimeoutError:

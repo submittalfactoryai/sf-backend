@@ -77,3 +77,11 @@ logs/
 
 # Docker ignore (optional)
 .dockerignore
+
+# Secrets
+core/keys/*.json
+*.key
+*.pem
+.env
+.env.*
+
